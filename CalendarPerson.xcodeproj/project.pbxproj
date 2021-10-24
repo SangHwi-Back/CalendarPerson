@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BC92AE827258A5F0079D326 /* Contents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BC92AE727258A5F0079D326 /* Contents.storyboard */; };
 		1BFAC6ED2725842B008A3346 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFAC6EC2725842B008A3346 /* AppDelegate.swift */; };
 		1BFAC6EF2725842B008A3346 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFAC6EE2725842B008A3346 /* SceneDelegate.swift */; };
 		1BFAC6F12725842B008A3346 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFAC6F02725842B008A3346 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BC92AE727258A5F0079D326 /* Contents.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contents.storyboard; sourceTree = "<group>"; };
 		1BFAC6E92725842B008A3346 /* CalendarPerson.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarPerson.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BFAC6EC2725842B008A3346 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BFAC6EE2725842B008A3346 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				1BFAC6EE2725842B008A3346 /* SceneDelegate.swift */,
 				1BFAC6F02725842B008A3346 /* ViewController.swift */,
 				1BFAC6F22725842B008A3346 /* Main.storyboard */,
+				1BC92AE727258A5F0079D326 /* Contents.storyboard */,
 				1BFAC6F52725842D008A3346 /* Assets.xcassets */,
 				1BFAC6F72725842D008A3346 /* LaunchScreen.storyboard */,
 				1BFAC6FA2725842D008A3346 /* Info.plist */,
@@ -231,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BC92AE827258A5F0079D326 /* Contents.storyboard in Resources */,
 				1BFAC6F92725842D008A3346 /* LaunchScreen.storyboard in Resources */,
 				1BFAC6F62725842D008A3346 /* Assets.xcassets in Resources */,
 				1BFAC6F42725842B008A3346 /* Main.storyboard in Resources */,
@@ -320,6 +324,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -381,6 +386,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -447,6 +453,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -475,6 +482,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
