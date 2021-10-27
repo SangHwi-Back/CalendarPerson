@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--year-->
         <scene sceneID="h4a-4x-iQX">
             <objects>
-                <viewController id="DeH-AH-ISL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="YearlyCalendarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DeH-AH-ISL" customClass="YearlyCalendarViewController" customModule="CalendarPerson" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PN7-kd-bmh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,24 +33,24 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="490" id="SPf-TK-iix">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="490"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YearlyCalendarTableViewCell" id="SPf-TK-iix" customClass="YearlyCalendarTableViewCell" customModule="CalendarPerson" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SPf-TK-iix" id="gjL-A3-xMf">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="490"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vYg-PW-Zcq">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="490"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="B8Q-wH-Xnl">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xkU-Tb-KUp">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MPx-UA-4Rz">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="YearlyCalendarCollectionViewCell" id="MPx-UA-4Rz">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zzD-Hb-jAV">
@@ -80,8 +80,16 @@
                                                 <constraint firstAttribute="trailing" secondItem="vYg-PW-Zcq" secondAttribute="trailing" id="gfv-N1-rJ8"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="calendarCollectionView" destination="vYg-PW-Zcq" id="G0p-j9-cdr"/>
+                                            <outlet property="calendarCollectionViewFlowLayout" destination="xkU-Tb-KUp" id="G9P-hX-AvV"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="DeH-AH-ISL" id="p9D-Bw-Nsd"/>
+                                    <outlet property="delegate" destination="DeH-AH-ISL" id="pdx-CA-hQR"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JQL-UV-zko"/>
@@ -96,24 +104,27 @@
                             <constraint firstItem="c61-er-nYW" firstAttribute="trailing" secondItem="JQL-UV-zko" secondAttribute="trailing" id="fdI-l1-QYU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="f7f-pJ-33m">
+                    <navigationItem key="navigationItem" title="year" id="f7f-pJ-33m">
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" id="Uth-cr-dqB"/>
-                            <barButtonItem title="Item" id="ijg-pa-Tbj"/>
+                            <barButtonItem systemItem="search" id="ijg-pa-Tbj"/>
+                            <barButtonItem systemItem="add" id="Uth-cr-dqB"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <segue destination="Syg-im-dVx" kind="show" id="lkD-iD-of8"/>
+                        <outlet property="addButton" destination="Uth-cr-dqB" id="qhd-qu-D7H"/>
+                        <outlet property="searchButton" destination="ijg-pa-Tbj" id="HPx-74-0py"/>
+                        <outlet property="yearlyTableView" destination="cmU-MI-hni" id="c99-zR-84y"/>
+                        <segue destination="Syg-im-dVx" kind="show" identifier="MonthlyCalendarViewController" id="lkD-iD-of8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5jX-cP-WMp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="911.59420289855075" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--month-->
         <scene sceneID="08r-lZ-cCW">
             <objects>
-                <viewController id="Syg-im-dVx" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MonthlyCalendarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Syg-im-dVx" customClass="MonthlyCalendarViewController" customModule="CalendarPerson" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MnQ-GM-QRv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,7 +206,7 @@
                                 <rect key="frame" x="0.0" y="108" width="414" height="705"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="501" id="x33-Lo-95B">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MonthlyCalendarTableViewCell" rowHeight="501" id="x33-Lo-95B" customClass="MonthlyCalendarTableViewCell" customModule="CalendarPerson" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="501"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x33-Lo-95B" id="VqE-QE-JX5">
@@ -242,8 +253,15 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="2kx-Tu-bQj" secondAttribute="bottom" id="x5k-zq-bK2"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="calendarCollectionView" destination="2kx-Tu-bQj" id="og0-la-3pw"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Syg-im-dVx" id="duG-2W-LMh"/>
+                                    <outlet property="delegate" destination="Syg-im-dVx" id="0uE-HD-Qu3"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JTg-nK-NZS"/>
@@ -261,7 +279,7 @@
                             <constraint firstItem="hpn-eU-B7E" firstAttribute="top" secondItem="JTg-nK-NZS" secondAttribute="top" id="vdX-li-10N"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="44z-0w-F4m">
+                    <navigationItem key="navigationItem" title="month" id="44z-0w-F4m">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="aa6-gi-T2E"/>
                             <barButtonItem systemItem="search" id="vXu-BM-9Qk"/>
@@ -269,17 +287,18 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <segue destination="cvd-BP-RRl" kind="show" id="VbQ-dn-XdU"/>
+                        <outlet property="monthlyTableView" destination="0e9-pB-9BM" id="HVg-uI-AdF"/>
+                        <segue destination="cvd-BP-RRl" kind="show" identifier="DailyScheduleViewController" id="VbQ-dn-XdU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ms-fp-0Jd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1779.7101449275365" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--day-->
         <scene sceneID="hwq-iB-I97">
             <objects>
-                <viewController id="cvd-BP-RRl" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DailyScheduleViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cvd-BP-RRl" customClass="DailyScheduleViewController" customModule="CalendarPerson" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TRb-8M-zbb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -505,7 +524,7 @@
                                 <rect key="frame" x="0.0" y="190" width="414" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="v7e-px-Lmf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="v7e-px-Lmf" customClass="DailyScheduleTableViewCell" customModule="CalendarPerson" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="80.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v7e-px-Lmf" id="wvE-6W-YxU">
@@ -546,6 +565,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="cvd-BP-RRl" id="le6-oT-lXI"/>
+                                    <outlet property="delegate" destination="cvd-BP-RRl" id="9Jf-l1-kwN"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jgb-9A-oog"/>
@@ -563,7 +586,7 @@
                             <constraint firstItem="AE2-Bi-NXS" firstAttribute="bottom" secondItem="jgb-9A-oog" secondAttribute="bottom" id="oPS-Gj-TqL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="6pG-TW-0jf">
+                    <navigationItem key="navigationItem" title="day" id="6pG-TW-0jf">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="w1E-p2-410"/>
                             <barButtonItem systemItem="search" id="z1F-Hm-GDk"/>
@@ -571,17 +594,18 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <segue destination="rtY-A9-Jdc" kind="show" id="Xpt-rW-jHE"/>
+                        <outlet property="dailyTableView" destination="3zg-qU-qsw" id="OQf-s5-Zq9"/>
+                        <segue destination="rtY-A9-Jdc" kind="show" identifier="ScheduleDetailViewController" id="Xpt-rW-jHE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jch-8o-xJW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2605.7971014492755" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--detail-->
         <scene sceneID="vf6-Zw-ree">
             <objects>
-                <viewController id="rtY-A9-Jdc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScheduleDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rtY-A9-Jdc" customClass="ScheduleDetailViewController" customModule="CalendarPerson" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y4A-zQ-V2b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -774,7 +798,7 @@
                             <constraint firstItem="c8m-3r-Ekh" firstAttribute="trailing" secondItem="P1t-VT-5vC" secondAttribute="trailing" constant="16" id="v5b-e8-JCY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="3vQ-Tw-Di6"/>
+                    <navigationItem key="navigationItem" title="detail" id="3vQ-Tw-Di6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yGv-9k-k0B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
