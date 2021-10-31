@@ -10,17 +10,31 @@ import UIKit
 class YearlyCalendarTableViewCell: UITableViewCell {
 
     @IBOutlet weak var calendarCollectionView: UICollectionView!
-    @IBOutlet weak var calendarCollectionViewFlowLayout: UICollectionViewFlowLayout!
+    
     var masterVC: UIViewController?
-    var date = Date()
+    var dates: [Date]? {
+        didSet {
+            self.calendarCollectionView.reloadData()
+        }
+    } // previousMonthFirstDay, currentMonthFirstDay, nextMonthFirstDay
+    
+    private lazy var viewWidth: CGFloat = {
+        if self.contentView.frame.width <= (masterVC?.view.frame.width ?? 0) { return masterVC!.view.frame.width }
+        return self.contentView.frame.width
+    }()
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        let layout = UICollectionViewFlowLayout()
+        
+        calendarCollectionView.delegate = self
         calendarCollectionView.dataSource = self
-        calendarCollectionViewFlowLayout.itemSize = CGSize(width: ((self.contentView.frame.size.width / 3) - 16),
-                                                           height: ((self.contentView.frame.size.width / 3) - 16))
-        calendarCollectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 32, left: 16, bottom: 32, right: 16)
-        calendarCollectionViewFlowLayout.minimumInteritemSpacing = 16
+        
+        layout.itemSize = CGSize(width: ((viewWidth / 3) - 16), height: ((viewWidth / 3) - 16))
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        
+        calendarCollectionView.collectionViewLayout = layout
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,15 +51,63 @@ extension YearlyCalendarTableViewCell: UICollectionViewDelegate {
 extension YearlyCalendarTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        (dates?.count ?? 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "YearlyCalendarCollectionViewCell", for: indexPath)
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YearlyCalendarCollectionViewCell.reuseIdentifier, for: indexPath) as! YearlyCalendarCollectionViewCell
+        cell.baseDate = dates![indexPath.row]
+        cell.initializeSubView()
+        
+        return cell
     }
 }
 
+//extension YearlyCalendarTableViewCell: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//        let viewWidth: CGFloat = {
+//            if self.contentView.frame.width <= (masterVC?.view.frame.width ?? 0) { return masterVC!.view.frame.width }
+//            return self.contentView.frame.width
+//        }()
+//
+//        return CGSize(width: ((viewWidth / 3) - 16), height: ((viewWidth / 3) - 16))
+//    }
+//}
 
+class YearlyCalendarHeaderTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var yearLabel: UILabel!
+    
+    override func awakeFromNib() {
+        
+    }
+}
 
-
+class YearlyCalendarCollectionViewCell: UICollectionViewCell {
+    
+    static let reuseIdentifier = String(describing: YearlyCalendarCollectionViewCell.self)
+    var baseDate: Date?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    func initializeSubView() {
+        let size = self.contentView.frame.size
+        
+        if let date = baseDate {
+            let vc2 = UIStoryboard(name: "Calendar", bundle: Bundle.main).instantiateViewController(withIdentifier: "CommonCalendarViewController") as! CommonCalendarViewController
+            vc2.startDate = date
+            vc2.calendarSize = size
+            
+//            let vc = CommonCalendarViewController(date: date, size: CGSize(width: size.width / 3, height: size.height))
+            self.contentView.addSubview(vc2.view)
+            
+        } else {
+            fatalError("CommonCalendar CollectionView awakeFromNib Error(baseDate is nil)")
+        }
+    }
+}
 

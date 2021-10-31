@@ -14,8 +14,14 @@ class YearlyCalendarViewController: UIViewController {
     
     @IBOutlet weak var yearlyTableView: UITableView!
     
+    var dates: [Date]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let calendar = Calendar(identifier: .gregorian)
+        dates = [calendar.date(byAdding: .month, value: -1, to: Date())!, Date(), calendar.date(byAdding: .month, value: 1, to: Date())!]
+        yearlyTableView.rowHeight = 180
+        yearlyTableView.reloadData()
     }
 }
 
@@ -30,6 +36,7 @@ extension YearlyCalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "YearlyCalendarTableViewCell", for: indexPath) as! YearlyCalendarTableViewCell
         cell.masterVC = self
+        cell.dates = dates
         return cell
     }
 }
