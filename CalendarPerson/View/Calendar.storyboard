@@ -18,8 +18,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d8C-4g-tCl">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LyH-hH-pEP">
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFe-Os-vHC">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3lC-1U-ERe"/>
+                                    <constraint firstItem="jFe-Os-vHC" firstAttribute="leading" secondItem="LyH-hH-pEP" secondAttribute="leading" id="4eB-In-LdJ"/>
+                                    <constraint firstItem="jFe-Os-vHC" firstAttribute="top" secondItem="LyH-hH-pEP" secondAttribute="top" id="DXE-03-fIj"/>
+                                    <constraint firstAttribute="bottom" secondItem="jFe-Os-vHC" secondAttribute="bottom" id="fuR-AV-v2u"/>
+                                    <constraint firstAttribute="trailing" secondItem="jFe-Os-vHC" secondAttribute="trailing" id="pwp-p3-jfY"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d8C-4g-tCl">
+                                <rect key="frame" x="0.0" y="30" width="400" height="370"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="M4G-af-9vj">
                                     <size key="itemSize" width="128" height="128"/>
@@ -29,15 +48,15 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CommonCalendarCollectionViewCell" id="Zq8-Cu-hjv" customClass="CommonCalendarCollectionViewCell" customModule="CalendarPerson" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="28.5" height="13.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="31.5" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xmo-uJ-p8q">
-                                            <rect key="frame" x="0.0" y="0.0" width="28.5" height="13.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="31.5" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXd-EG-LTQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="28.5" height="13.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SXd-EG-LTQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="31.5" height="16"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -65,20 +84,25 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="LyH-hH-pEP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="4h1-BI-7jf"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="d8C-4g-tCl" secondAttribute="trailing" id="8vy-PA-zBQ"/>
+                            <constraint firstItem="LyH-hH-pEP" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="OSj-2I-nEh"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="d8C-4g-tCl" secondAttribute="bottom" id="Ttg-Ea-m9G"/>
                             <constraint firstItem="d8C-4g-tCl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="YQs-pR-eTB"/>
-                            <constraint firstItem="d8C-4g-tCl" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="wQs-1t-3Ks"/>
+                            <constraint firstItem="d8C-4g-tCl" firstAttribute="top" secondItem="LyH-hH-pEP" secondAttribute="bottom" id="pF4-Z9-tWb"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LyH-hH-pEP" secondAttribute="trailing" id="twY-m1-lUu"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="400" height="400"/>
                     <connections>
                         <outlet property="collectionView" destination="d8C-4g-tCl" id="dUd-KP-fEB"/>
+                        <outlet property="headerLabel" destination="jFe-Os-vHC" id="RJ3-vy-zbB"/>
+                        <outlet property="headerView" destination="LyH-hH-pEP" id="jVV-LQ-cc9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="138"/>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
     <resources>

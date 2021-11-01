@@ -30,25 +30,25 @@
                                     <barButtonItem title="Item" id="sGa-8e-XTx"/>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cmU-MI-hni">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cmU-MI-hni">
                                 <rect key="frame" x="0.0" y="44" width="375" height="579"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Exc-E1-kpq" customClass="YearlyCalendarHeaderTableViewCell" customModule="CalendarPerson" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="375" height="46.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YearlyCalendarHeaderTableViewCell" id="Exc-E1-kpq" customClass="YearlyCalendarHeaderTableViewCell" customModule="CalendarPerson" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Exc-E1-kpq" id="0lD-cq-znT">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="46.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jet-9a-jdE">
-                                                    <rect key="frame" x="16" y="0.0" width="343" height="37.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="37"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                                     <color key="textColor" name="AccentColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u6L-xY-x0R">
-                                                    <rect key="frame" x="16" y="45.5" width="343" height="1"/>
+                                                    <rect key="frame" x="16" y="45" width="343" height="1"/>
                                                     <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="k36-ly-1ux"/>
@@ -59,7 +59,7 @@
                                                 <constraint firstItem="jet-9a-jdE" firstAttribute="top" secondItem="0lD-cq-znT" secondAttribute="top" id="ALR-si-EPS"/>
                                                 <constraint firstAttribute="trailing" secondItem="jet-9a-jdE" secondAttribute="trailing" constant="16" id="OLf-LN-zhb"/>
                                                 <constraint firstAttribute="trailing" secondItem="u6L-xY-x0R" secondAttribute="trailing" constant="16" id="Ofy-X5-Xjv"/>
-                                                <constraint firstAttribute="bottom" secondItem="u6L-xY-x0R" secondAttribute="bottom" id="Sxf-nZ-Dx9"/>
+                                                <constraint firstAttribute="bottom" secondItem="u6L-xY-x0R" secondAttribute="bottom" constant="5.5" id="Sxf-nZ-Dx9"/>
                                                 <constraint firstItem="jet-9a-jdE" firstAttribute="leading" secondItem="0lD-cq-znT" secondAttribute="leading" constant="16" id="m2L-qy-48c"/>
                                                 <constraint firstItem="u6L-xY-x0R" firstAttribute="leading" secondItem="0lD-cq-znT" secondAttribute="leading" constant="16" id="mEF-LQ-aOr"/>
                                                 <constraint firstItem="u6L-xY-x0R" firstAttribute="top" secondItem="jet-9a-jdE" secondAttribute="bottom" constant="8" symbolic="YES" id="smU-2z-CJl"/>
@@ -69,24 +69,24 @@
                                             <outlet property="yearLabel" destination="jet-9a-jdE" id="FBR-oM-Plr"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YearlyCalendarTableViewCell" rowHeight="180" id="SPf-TK-iix" customClass="YearlyCalendarTableViewCell" customModule="CalendarPerson" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="91" width="375" height="180"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="YearlyCalendarTableViewCell" id="SPf-TK-iix" customClass="YearlyCalendarTableViewCell" customModule="CalendarPerson" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="96" width="375" height="11"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SPf-TK-iix" id="gjL-A3-xMf">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="11"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H4G-fo-2XX">
-                                                    <rect key="frame" x="16" y="11" width="343" height="158"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H4G-fo-2XX">
+                                                    <rect key="frame" x="16" y="11" width="343" height="0.0"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pZb-iS-4vJ">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PYJ-Lg-eJJ">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="YearlyCalendarCollectionViewCell" id="n4a-uz-OSV" customClass="YearlyCalendarCollectionViewCell" customModule="CalendarPerson" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="YearlyCalendarCollectionViewCell" id="n4a-uz-OSV" customClass="YearlyCalendarCollectionViewCell" customModule="CalendarPerson" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2zf-hk-4Yd">
@@ -101,7 +101,7 @@
                                                 <constraint firstItem="H4G-fo-2XX" firstAttribute="top" secondItem="gjL-A3-xMf" secondAttribute="topMargin" id="CvR-rc-Q0l"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="H4G-fo-2XX" secondAttribute="trailing" id="DEc-jR-Opz"/>
                                                 <constraint firstItem="H4G-fo-2XX" firstAttribute="leading" secondItem="gjL-A3-xMf" secondAttribute="leadingMargin" id="FtH-AS-J3J"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="H4G-fo-2XX" secondAttribute="bottom" id="dCd-Em-0dl"/>
+                                                <constraint firstAttribute="bottom" secondItem="H4G-fo-2XX" secondAttribute="bottom" id="dCd-Em-0dl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

@@ -27,6 +27,8 @@ struct MonthMetadata {
 
 class CommonCalendarViewController: UIViewController {
     
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var startDate: Date!
@@ -37,27 +39,6 @@ class CommonCalendarViewController: UIViewController {
     var showHeaderView: Bool = false
     var showFooterView: Bool = false
     var selectCellEnable: Bool = false
-    
-//    init(date baseDate: Date,
-//         size calendarSize: CGSize,
-//         showHeaderView: Bool = false,
-//         showFooterView: Bool = false,
-//         selectCellEnable: Bool = false,
-//         initialSize: CGSize? = nil
-//    ) {
-//
-//        self.startDate = baseDate
-//        self.calendarSize = calendarSize
-//        self.showHeaderView = showHeaderView
-//        self.showFooterView = showFooterView
-//        self.selectCellEnable = selectCellEnable
-//
-//        super.init(nibName: nil, bundle: nil)
-//    }
-    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
     
     var daysInMonth: [Day]! {
         didSet {
@@ -72,22 +53,23 @@ class CommonCalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.frame.size = calendarSize
-        let layout = UICollectionViewFlowLayout()
+        dateFormatter.dateFormat = "MMM"
+        headerLabel.text = dateFormatter.string(from: startDate)
         
+        let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 1
-//        layout.itemSize = CGSize(width: calendarSize.width / 7, height: calendarSize.width / 7)
+        layout.sectionInset.left = 0
+        layout.sectionInset.right = 0
         layout.itemSize = CGSize(width: calendarSize.width / 9, height: calendarSize.width / 8)
         
         collectionView.collectionViewLayout = layout
-        dateFormatter.dateFormat = "d"
         
         if startDate == nil {
             dismiss(animated: false, completion: nil)
         }
         
         daysInMonth = generateDayInMonth(for: startDate)
-        
         collectionView.reloadData()
     }
     
@@ -119,6 +101,7 @@ class CommonCalendarViewController: UIViewController {
             fatalError("CommonCalendarViewController baseDate Error : \(baseDate)")
         }
         
+        dateFormatter.dateFormat = "d"
         let numberOfDaysInMonth = metadata.numberOfDays
         let offsetInInitialRow = metadata.firstDayWeekday
         let firstDayOfMonth = metadata.firstDay
@@ -197,18 +180,11 @@ extension CommonCalendarViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonCalendarCollectionViewCell.reuseIdentifier, for: indexPath) as! CommonCalendarCollectionViewCell
         let date = daysInMonth[indexPath.row]
-        cell.dateLabel.text = date.number
-        cell.accessibilityLabel = date.number
+        cell.dateLabel.text = date.isWithinDisplayedMonth ? date.number : ""
         
         return cell
     }
 }
-
-//extension CommonCalendarViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: calendarSize.width / 7, height: calendarSize.width / 7)
-//    }
-//}
 
 class CommonCalendarCollectionViewCell: UICollectionViewCell {
     static var reuseIdentifier = String(describing: CommonCalendarCollectionViewCell.self)
