@@ -11,6 +11,10 @@ protocol YearlyTableViewDateFetchDelegate {
     func fetchNewDates(_ isNextYear: Bool) -> [Date]?
 }
 
+protocol YearlyTableViewSegueDelegate {
+    func goDetail(_ date: Date)
+}
+
 class YearlyCalendarViewController: UIViewController {
 
     @IBOutlet weak var searchButton: UIBarButtonItem!
@@ -43,6 +47,14 @@ class YearlyCalendarViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let date = sender as? Date,
+           let dest = segue.destination as? MonthlyCalendarViewController
+        {
+            dest.baseDate = date
+        }
+    }
 }
 
 extension YearlyCalendarViewController: UITableViewDelegate {
@@ -67,7 +79,7 @@ extension YearlyCalendarViewController: UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: YearlyCalendarTableViewCell.reuseIdentifier, for: indexPath) as! YearlyCalendarTableViewCell
-            cell.masterVC = self
+            cell.delegate = self
             cell.dates = dates
             return cell
         }
@@ -91,3 +103,12 @@ extension YearlyCalendarViewController: UITableViewDataSource {
 //
 //    }
 //}
+
+extension YearlyCalendarViewController: YearlyTableViewSegueDelegate {
+    func goDetail(_ date: Date) {
+        self.performSegue(
+            withIdentifier: String(describing: MonthlyCalendarViewController.self),
+            sender: date
+        )
+    }
+}

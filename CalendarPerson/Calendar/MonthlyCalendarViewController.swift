@@ -11,6 +11,8 @@ class MonthlyCalendarViewController: UIViewController {
 
     @IBOutlet weak var monthlyTableView: UITableView!
     
+    var baseDate: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

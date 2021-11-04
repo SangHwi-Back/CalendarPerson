@@ -6,16 +6,20 @@
 //
 
 import UIKit
+import SystemConfiguration.CaptiveNetwork
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var sizeVertical: CGRect?
+    var daysGenerator: CalendarDaysFactory?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         self.sizeVertical = UIDevice.current.accessibilityFrame
-        print(self.sizeVertical)
+        self.daysGenerator = CalendarDaysFactory(baseDate: Date())
+        
+//        print(self.sizeVertical)
         return true
     }
 
