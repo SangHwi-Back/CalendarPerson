@@ -35,6 +35,7 @@ class YearlyCalendarViewController: UIViewController {
         super.viewDidLoad()
         let calendar = Calendar(identifier: .gregorian)
         dateFormatter.dateFormat = "y"
+//        yearlyTableView.rowHeight = UITableView.automaticDimension
         var dateComponent = calendar.dateComponents([.year], from: currentDateDisplayed)
         dateComponent.day = 1
         let startDateBeforeDay = calendar.date(from: dateComponent)
@@ -59,11 +60,7 @@ class YearlyCalendarViewController: UIViewController {
 
 extension YearlyCalendarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row.isMultiple(of: 2) {
-            return 50
-        } else {
-            return yearlyTableView.frame.height - 30
-        }
+        return UITableView.automaticDimension
     }
 }
 

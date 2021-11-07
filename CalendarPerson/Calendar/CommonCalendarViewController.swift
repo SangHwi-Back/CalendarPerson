@@ -18,7 +18,7 @@ class CommonCalendarViewController: UIViewController {
     
     var startDate: Date!
     var dateFormatter = DateFormatter()
-    var daysGenerator: CalendarDaysFactory!
+    var daysGenerator: DaysGenerator!
     
     var calendarSize: CGSize!
     var showHeaderView: Bool = false
@@ -40,6 +40,7 @@ class CommonCalendarViewController: UIViewController {
         super.viewDidLoad()
         self.daysGenerator = (UIApplication.shared.delegate as! AppDelegate).daysGenerator
         self.collectionView.isUserInteractionEnabled = selectCellEnable
+        self.view.frame.size = calendarSize
         
         dateFormatter.dateFormat = "MMM"
         headerLabel.text = dateFormatter.string(from: startDate)
@@ -50,7 +51,6 @@ class CommonCalendarViewController: UIViewController {
         layout.sectionInset.left = 0
         layout.sectionInset.right = 0
         layout.itemSize = CGSize(width: calendarSize.width / 9, height: calendarSize.width / 8)
-        self.view.frame.size = calendarSize
         
         collectionView.collectionViewLayout = layout
         

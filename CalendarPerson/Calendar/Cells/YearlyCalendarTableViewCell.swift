@@ -11,11 +11,18 @@ class YearlyCalendarTableViewCell: UITableViewCell {
     
     static let reuseIdentifier = String(describing: YearlyCalendarTableViewCell.self)
     @IBOutlet weak var calendarCollectionView: UICollectionView!
+    @IBOutlet weak var calendarCollectionViewConstraintHeight: NSLayoutConstraint!
     
     var delegate: YearlyTableViewSegueDelegate?
     var dates: [Date]? {
         didSet {
-            self.calendarCollectionView.reloadData()
+            calendarCollectionView.reloadData()
+            let height = calendarCollectionView.collectionViewLayout.collectionViewContentSize.height
+            if height > calendarCollectionViewConstraintHeight.constant {
+                calendarCollectionViewConstraintHeight.constant = height
+                superview?.setNeedsLayout()
+                superview?.layoutIfNeeded()
+            }
         }
     } // previousMonthFirstDay, currentMonthFirstDay, nextMonthFirstDay
     
@@ -30,7 +37,7 @@ class YearlyCalendarTableViewCell: UITableViewCell {
             width: (viewWidth / 3) - (layout.minimumInteritemSpacing * 2),
             height: (viewWidth / 3) - (layout.minimumInteritemSpacing * 2) + 50
         )
-        
+
         calendarCollectionView.collectionViewLayout = layout
         calendarCollectionView.reloadData()
     }
@@ -94,20 +101,20 @@ class YearlyCalendarCollectionViewCell: UICollectionViewCell {
         let size = self.contentView.frame.size
         
         if let date = baseDate {
+            
             let calendar = UIStoryboard(
                 name: "Calendar",
                 bundle: Bundle.main)
                 .instantiateViewController(
                     withIdentifier: String(describing: CommonCalendarViewController.self)
             ) as! CommonCalendarViewController
-            
-            calendar.startDate = date
-            calendar.calendarSize = CGSize(
+            let calendarSize = CGSize(
                 width: size.width,
                 height: size.height + 50
             )
             
-//            self.addSubview(calendar.view)
+            calendar.startDate = date
+            calendar.calendarSize = calendarSize
             self.contentView.addSubview(calendar.view)
             
         } else {
