@@ -25,8 +25,7 @@ class MonthlyCalendarViewController: UIViewController {
         daysGenerator = (UIApplication.shared.delegate as! AppDelegate).daysGenerator
         
         if let baseDate = baseDate {
-            daysGenerator.dateFormatter.dateFormat = "d"
-            daysGenerator.modelDate = baseDate
+            daysGenerator.changeDate(with: baseDate)
             var dateComponent = daysGenerator.calendar.dateComponents([.month], from: baseDate)
             dateComponent.day = 1
             

@@ -30,7 +30,7 @@
                                     <barButtonItem title="Item" id="sGa-8e-XTx"/>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cmU-MI-hni">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cmU-MI-hni">
                                 <rect key="frame" x="0.0" y="44" width="375" height="579"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -77,12 +77,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H4G-fo-2XX">
-                                                    <rect key="frame" x="16" y="11" width="343" height="169"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="69"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="750" constant="169" id="gzn-ak-8Cv"/>
                                                     </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="5" id="PYJ-Lg-eJJ">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="PYJ-Lg-eJJ">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -108,7 +108,7 @@
                                                 <constraint firstItem="H4G-fo-2XX" firstAttribute="top" secondItem="gjL-A3-xMf" secondAttribute="topMargin" id="CvR-rc-Q0l"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="H4G-fo-2XX" secondAttribute="trailing" id="DEc-jR-Opz"/>
                                                 <constraint firstItem="H4G-fo-2XX" firstAttribute="leading" secondItem="gjL-A3-xMf" secondAttribute="leadingMargin" id="FtH-AS-J3J"/>
-                                                <constraint firstAttribute="bottom" secondItem="H4G-fo-2XX" secondAttribute="bottom" id="dCd-Em-0dl"/>
+                                                <constraint firstAttribute="bottom" secondItem="H4G-fo-2XX" secondAttribute="bottom" constant="100" id="dCd-Em-0dl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

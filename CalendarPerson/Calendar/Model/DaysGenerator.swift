@@ -27,9 +27,9 @@ struct MonthMetadata {
 
 class DaysGenerator {
     
-    var calendar = Calendar.current
-    var dateFormatter = DateFormatter()
-    var modelDate: Date!
+    private(set) var calendar = Calendar.current
+    private var dateFormatter = DateFormatter()
+    private var modelDate: Date!
     
     init(baseDate: Date) {
         dateFormatter.dateFormat = "d"
@@ -130,5 +130,17 @@ class DaysGenerator {
         isSelected: calendar.isDate(date, inSameDayAs: modelDate),
         isWithinDisplayedMonth: isWithinDisplayedMonth
       )
+    }
+    
+    func changeDateFormat(with format: String) {
+        dateFormatter.dateFormat = format
+    }
+    
+    func setCalendarType(with identifier: Calendar.Identifier) {
+        calendar = Calendar(identifier: identifier)
+    }
+    
+    func changeDate(with date: Date) {
+        self.modelDate = date
     }
 }

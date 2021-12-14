@@ -13,8 +13,11 @@ import UIKit
 class CommonCalendarViewController: UIViewController {
     
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
     
     var startDate: Date!
     var dateFormatter = DateFormatter()
@@ -26,11 +29,13 @@ class CommonCalendarViewController: UIViewController {
     var selectCellEnable: Bool = false
     
     var layout: UICollectionViewFlowLayout!
-    var daysInMonth: [Day]! {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    var daysInMonth: [Day]!
+    
+    var itemViewContainer: UIView!
+//    lazy var itemViewSize = CGSize(width: Double(calendarSize.width / 7), height: Double(calendarSize.width / 7))
+    
+    var views: [[UIView]] = [[UIView]]()
+    var stackViews: [UIStackView] = [UIStackView]()
     
     override func loadView() {
         super.loadView()
@@ -38,55 +43,72 @@ class CommonCalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.daysGenerator = (UIApplication.shared.delegate as! AppDelegate).daysGenerator
-        self.collectionView.isUserInteractionEnabled = selectCellEnable
-        self.view.frame.size = calendarSize
-        
+        daysGenerator = (UIApplication.shared.delegate as! AppDelegate).daysGenerator
         dateFormatter.dateFormat = "MMM"
         headerLabel.text = dateFormatter.string(from: startDate)
-        
-        layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 1
-        layout.sectionInset.left = 0
-        layout.sectionInset.right = 0
-        layout.itemSize = CGSize(width: calendarSize.width / 9, height: calendarSize.width / 8)
-        
-        collectionView.collectionViewLayout = layout
         
         if startDate == nil {
             dismiss(animated: false, completion: nil)
         }
         
         daysInMonth = daysGenerator.generateDayInMonth(for: startDate)
-    }
-}
-
-extension CommonCalendarViewController: UICollectionViewDelegate {
-    
-}
-
-extension CommonCalendarViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return daysInMonth.count
+        setMonthViews()
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func setMonthViews() {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonCalendarCollectionViewCell.reuseIdentifier, for: indexPath) as! CommonCalendarCollectionViewCell
-        let date = daysInMonth[indexPath.row]
-        cell.dateLabel.text = date.isWithinDisplayedMonth ? date.number : ""
+        for (index, day) in daysInMonth.enumerated() {
+            
+            let itemView = generateItemView()
+            if day.isWithinDisplayedMonth {
+                itemView.setViewContents(date: day)
+            }
+            
+            setItemViewConstraint(
+                view: itemView
+                , coord: (
+                    row: (Int(index / 7) + 1),
+                    column: (Int(index % 7) + 1)
+                )
+            )
+        }
+    }
+    
+    func generateItemView() -> UIView {
+        let itemView = UIView()
+        itemView.frame.size = CGSize(width: 20, height: 20)
+        return itemView
+    }
+    
+    func setItemViewConstraint(view: UIView, coord: (row: Int, column: Int)) {
         
-        return cell
+        if coord.column == 1 {
+            
+            contentViewHeightConstraint.constant = CGFloat(coord.row * 22)
+            
+            let stackView = UIStackView()
+            stackView.axis = .horizontal
+            stackView.alignment = .fill
+            stackView.distribution = .fillEqually
+            stackView.frame.size = CGSize(width: contentStackView.frame.width, height: view.frame.height)
+            
+            contentStackView.addArrangedSubview(stackView)
+        }
+        
+        (contentStackView.arrangedSubviews.last as? UIStackView)?.addArrangedSubview(view)
+//        contentStackView.subviews.last?.addSubview(view)
     }
 }
 
-class CommonCalendarCollectionViewCell: UICollectionViewCell {
-    static var reuseIdentifier = String(describing: CommonCalendarCollectionViewCell.self)
-    
-    @IBOutlet weak var dateLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
+fileprivate extension UIView {
+    func setViewContents(date: Day) {
+        let label = UILabel()
+        self.addSubview(label)
+        label.textAlignment = .center
+        label.text = date.number
+        label.textColor = .label
+        
+        label.frame.size = self.frame.size
+        label.center = self.center
     }
 }
