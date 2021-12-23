@@ -75,22 +75,12 @@ class YearlyCalendarViewController: UIViewController {
             }
         }
         
-//        if let date = calendar.date(byAdding: .year, value: -1, to: currentDateDisplayed) {
-//            appendYearMetaDates(in: date)
-//        }
-//        appendYearMetaDates(in: currentDateDisplayed)
-//        if let date = calendar.date(byAdding: .year, value: 1, to: currentDateDisplayed) {
-//            appendYearMetaDates(in: date, willBeReload: true)
-//        }
-        
         yearlyTableView.scrollToRow(at: IndexPath(row: 1, section: 0), at: .top, animated: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let date = sender as? Date,
-           let dest = segue.destination as? MonthlyCalendarViewController
-        {
-            dest.baseDate = date
+        if let dest = segue.destination as? MonthlyCalendarViewController {
+            dest.baseDate = (sender as? Date)
         }
     }
     
@@ -104,17 +94,11 @@ class YearlyCalendarViewController: UIViewController {
         
         dates[String(year)] = [Date]()
         let firstDate = calendar.date(from: DateComponents(calendar: calendar, year: year, month: 2, day: 0))!
-//        components.month = 13
-//        components.day = 0
-//        let lastDate = calendar.date(from: components)!
-        
-//        DispatchQueue.global(qos: .userInitiated).async {
-            for i in (0 ..< 12) {
-                if let date = calendar.date(byAdding: .month, value: i, to: firstDate) {
-                    self.dates[String(year)]!.append(date)
-                }
+        for i in (0 ..< 12) {
+            if let date = calendar.date(byAdding: .month, value: i, to: firstDate) {
+                self.dates[String(year)]!.append(date)
             }
-//        }
+        }
         
         if willBeReload {
             yearlyTableView.reloadData()
@@ -127,7 +111,6 @@ extension YearlyCalendarViewController: UITableViewDelegate {
         return UITableView.automaticDimension
     }
 }
-
 extension YearlyCalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dates.count * 2
@@ -180,7 +163,7 @@ extension YearlyCalendarViewController: UITableViewDataSource {
             
             cell.segueDelegate = self
             cell.dataFetchDelegate = self
-            cell.datesInARow = dates[year]
+//            cell.datesInARow = dates[year]
             cell.year = year
             
             if let VCs = dateVCs[year] {
