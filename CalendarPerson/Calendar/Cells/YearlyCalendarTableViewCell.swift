@@ -13,23 +13,9 @@ class YearlyCalendarTableViewCell: UITableViewCell {
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     @IBOutlet weak var calendarCollectionViewConstraintHeight: NSLayoutConstraint!
     
-    private let storyboard = UIStoryboard(name: "Calendar", bundle: Bundle.main)
     var segueDelegate: YearlyTableViewSegueDelegate?
     var dataFetchDelegate: YearlyTableViewDateFetchDelegate?
-//    var datesInARow: [Date]? {
-//        didSet {
-//            calendarCollectionView.reloadData()
-//            let height = calendarCollectionView.collectionViewLayout.collectionViewContentSize.height
-//            if height > calendarCollectionViewConstraintHeight.constant {
-//                calendarCollectionViewConstraintHeight.constant = height
-//                superview?.setNeedsLayout()
-//                superview?.layoutIfNeeded()
-//            }
-//        }
-//    } // previousMonthFirstDay, currentMonthFirstDay, nextMonthFirstDay
-    
     var datesinCells: [UIViewController]!
-    var alreadyInstalled = false
     var year: String!
     
     private lazy var viewWidth: CGFloat = floor(self.calendarCollectionView.frame.width)
@@ -40,17 +26,6 @@ class YearlyCalendarTableViewCell: UITableViewCell {
         let calendar = OneYearCalendarView(rect: contentView.frame, date: Date())
         self.contentView.addSubview(calendar)
         calendar.gridYearView()
-//        let layout = UICollectionViewFlowLayout()
-//        layout.minimumInteritemSpacing = 0
-//        if datesinCells == nil {
-//            datesinCells = [UIViewController]()
-//        }
-//        layout.estimatedItemSize = CGSize(
-//            width: (viewWidth / 3) - (self.layoutMargins.left + self.layoutMargins.right),
-//            height: (viewWidth / 3)
-//        )
-//        calendarCollectionView.collectionViewLayout = layout
-//        calendarCollectionView.reloadData()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -80,26 +55,6 @@ extension YearlyCalendarTableViewCell: UICollectionViewDataSource {
             withReuseIdentifier: YearlyCalendarCollectionViewCell.reuseIdentifier,
             for: indexPath)
         as! YearlyCalendarCollectionViewCell
-        
-//        cell.baseDate = datesInARow![indexPath.row]
-//
-//        if let calendarView =
-//            Bundle.main.loadNibNamed(
-//                String(describing: CommonCalendarView.self),
-//                owner: self,
-//                options: nil)?.first as? CommonCalendarView {
-//
-//            calendarView.footerViewIsHidden = true
-//            calendarView.headerViewIsHidden = false
-//            calendarView.baseDate = datesInARow![indexPath.row]
-//
-//            cell.contentView.addSubview(calendarView)
-//
-//            calendarView.initializeCalendarView()
-//        }
-//        let view = cell.initializeSubView().view!
-//        view.frame = CGRect(origin: CGPoint.zero, size: cell.contentView.frame.size)
-//        cell.contentView.addSubview(view)
         
         return cell
     }
@@ -167,15 +122,6 @@ class OneYearCalendarView: UIView {
         self.generateOneYearDateArray()
     }
     
-//    override func addSubview(_ view: UIView) {
-//        self.addSubview(view)
-//        gridYearView()
-//
-//        for (inx, date) in oneYearDates.enumerated() {
-//            setGridContents(date: date, yearViewGrid[Int(inx/3)])
-//        }
-//    }
-    
     private func generateOneYearDateArray() {
         
         var baseComponent = Calendar.current.dateComponents([.year, .month, .day], from: date)
@@ -190,27 +136,27 @@ class OneYearCalendarView: UIView {
     
     func gridYearView() {
         
-        guard superview != nil else {
+        guard let sView = superview else {
             return
         }
         
         let vStack = UIStackView()
         vStack.alignment = .fill
-        vStack.distribution = .fillEqually
-        vStack.spacing = 10
+        vStack.distribution = .fill
+        vStack.spacing = 18
         vStack.axis = .vertical
         
-        superview!.addSubview(vStack)
+        sView.addSubview(vStack)
         
         vStack.translatesAutoresizingMaskIntoConstraints = false
         
         [
-            vStack.leftAnchor.constraint(equalTo: superview!.leftAnchor),
-            vStack.rightAnchor.constraint(equalTo: superview!.rightAnchor),
-            vStack.topAnchor.constraint(equalTo: superview!.topAnchor),
-            vStack.bottomAnchor.constraint(equalTo: superview!.bottomAnchor),
-            vStack.centerXAnchor.constraint(equalTo: superview!.centerXAnchor),
-            vStack.centerYAnchor.constraint(equalTo: superview!.centerYAnchor)
+            vStack.leftAnchor.constraint(equalTo: sView.leftAnchor, constant: 16),
+            vStack.rightAnchor.constraint(equalTo: sView.rightAnchor, constant: -16),
+            vStack.topAnchor.constraint(equalTo: sView.topAnchor),
+            vStack.bottomAnchor.constraint(equalTo: sView.bottomAnchor),
+            vStack.centerXAnchor.constraint(equalTo: sView.centerXAnchor),
+            vStack.centerYAnchor.constraint(equalTo: sView.centerYAnchor)
         ].forEach {
             $0.isActive = true
         }
@@ -218,24 +164,26 @@ class OneYearCalendarView: UIView {
         for _ in 0..<4 {
             
             let hStack = UIStackView()
-            hStack.alignment = .fill
+            hStack.alignment = .top
             hStack.distribution = .fillEqually
             hStack.spacing = 2
             hStack.axis = .horizontal
             vStack.addArrangedSubview(hStack)
             
-//            hStack.translatesAutoresizingMaskIntoConstraints = false
-//            hStack.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3).isActive = true
-            
             yearViewGrid.append(hStack)
         }
         
         for (inx, date) in oneYearDates.enumerated() {
-            setGridContents(date: date, yearViewGrid[Int(inx/3)])
+            setGridContents(date: date, &yearViewGrid[Int(inx/3)])
+            
+//            if (inx + 1) % 3 == 0 {
+//                yearViewGrid[Int(inx/3)].setNeedsLayout()
+//                yearViewGrid[Int(inx/3)].layoutIfNeeded()
+//            }
         }
     }
     
-    private func setGridContents(date: Date, _ stackView: UIStackView) {
+    private func setGridContents(date: Date, _ stackView: inout UIStackView) {
         
         guard let daysGenerator = (UIApplication.shared.delegate as! AppDelegate).daysGenerator else {
             return
@@ -249,16 +197,17 @@ class OneYearCalendarView: UIView {
         commonCalendarView.footerView.isHidden = true
         
         let daysInMonth = daysGenerator.generateDayInMonth(for: date)
-        let width = Int(superview!.frame.width / 21) // 20
+        let width = Int(commonCalendarView.parentStackView.frame.width / 21)
         
         for (inx, day) in daysInMonth.enumerated() {
             
             let itemView = UILabel(
                 frame: CGRect(
-                    origin: CGPoint(x: width * (inx % 7), y: width * Int((inx+1) / 7)),
+                    origin: CGPoint(x: width * (inx % 7), y: width * Int((inx) / 7)),
                     size: CGSize(width: width, height: width)
                 )
             )
+            itemView.textAlignment = .right
             itemView.adjustsFontSizeToFitWidth = true
             
             if day.isWithinDisplayedMonth {
@@ -267,18 +216,21 @@ class OneYearCalendarView: UIView {
             
             commonCalendarView.contentView.addSubview(itemView)
             
-            if inx == daysInMonth.endIndex-1 {
-//                DispatchQueue.main.async {
-                    commonCalendarView.contentVerticalLayoutHeight.constant = itemView.frame.maxY
-                    
-                    if stackView.frame.height < itemView.frame.maxY {
-                        stackView.translatesAutoresizingMaskIntoConstraints = false
-                        stackView.heightAnchor.constraint(equalToConstant: itemView.frame.maxY).isActive = true
-                    }
-//                }
+            if inx == daysInMonth.count - 1 {
+                commonCalendarView.contentViewHeight = itemView.frame.maxY
             }
         }
         
         stackView.addArrangedSubview(commonCalendarView)
+        
+        if
+            let labels = commonCalendarView.contentView.subviews as? [UILabel],
+            let minLabelFont = labels.min(by: { $0.font.pointSize < $1.font.pointSize } )?.font
+        {
+            
+            print(minLabelFont.pointSize, commonCalendarView.parentStackView.frame.height)
+            labels.forEach { $0.font = minLabelFont }
+//            stackView.frame.size.height = commonCalendarView.parentStackView.frame.height
+        }
     }
 }

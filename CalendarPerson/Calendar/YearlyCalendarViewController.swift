@@ -168,7 +168,6 @@ extension YearlyCalendarViewController: UITableViewDataSource {
             
             if let VCs = dateVCs[year] {
                 cell.datesinCells = VCs
-                cell.alreadyInstalled = true
             }
             
             if valueApplyingCurrentDate > 0 {
