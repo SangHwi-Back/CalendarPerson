@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol YearlyTableViewDateFetchDelegate {
-    func sendCommonCalendars(_ calendars: [UIViewController], year: String)
-}
-
 protocol YearlyTableViewSegueDelegate {
     func goDetail(_ date: Date)
 }
@@ -21,164 +17,54 @@ class YearlyCalendarViewController: UIViewController {
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var yearlyTableView: UITableView!
     
-    var currentDateDisplayed: Date = Date()
-    var calendar = Calendar(identifier: .gregorian)
-    var dateFormatter = DateFormatter()
-    var isFirst = true
-    
-    // TableView Models
-    var dateVCs = [String: [UIViewController]]()
-    var dates = [String: [Date]]()
-    var datesIndex = [IndexPath: String]()
-    
-    var lastYear: String {
-        return String(self.dates.keys.min(by: {Int($0)! > Int($1)!}) ?? "")
-    }
-    var firstYear: String {
-        return String(self.dates.keys.max(by: {Int($0)! > Int($1)!}) ?? "")
-    }
-    lazy var valueOffset = { [self] () -> Int in
-        if yearlyTableView.contentOffset.y > oldOffset.y {
-            return 1
-        } else if yearlyTableView.contentOffset.y < oldOffset.y {
-            return -1
-        }
-        
-        return 0
-    }
-    lazy var valueIndexPath = { [self] (index: Int) -> Int in
-        if oldIndexPathRow < index {
-            return 1
-        } else if oldIndexPathRow > index {
-            return -1
-        }
-        
-        return 0
-    }
-    
-    var oldIndexPathRow: Int = 0
-    var oldOffset = CGPoint()
-    var valueApplyingCurrentDate = 0
+    private var dateFormatter = DateFormatter()
+    private var yearGenerator = DaysOfYearInCalendar(current: Calendar.current, formatString: "d")!
+    private var yearMetadata = [YearMetadata]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         dateFormatter.dateFormat = "y"
         
-        let currentYear = calendar.dateComponents([.year], from: currentDateDisplayed).year
-        let dateComponents = DateComponents(calendar: calendar, year: currentYear, month: 2, day: 0)
-        currentDateDisplayed = dateComponents.date!
-        
-        for i in 0...10 {
-            if let date = calendar.date(byAdding: .year, value: -5+i, to: currentDateDisplayed) {
-                appendYearMetaDates(in: date)
-            }
+        do {
+            yearMetadata.append(try yearGenerator.getPreviousYearMetadata())
+            yearMetadata.append(try yearGenerator.getYearMetadata())
+            yearMetadata.append(try yearGenerator.getNextYearMetadata())
+        } catch {
+            print(error)
         }
-        
-        yearlyTableView.scrollToRow(at: IndexPath(row: 1, section: 0), at: .top, animated: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? MonthlyCalendarViewController {
-            dest.baseDate = (sender as? Date)
-        }
-    }
-    
-    func appendYearMetaDates(in date: Date, willBeReload: Bool = false) {
-        
-        guard let year = calendar.dateComponents([.year], from: date).year else { return }
-        
-        if Array(dates.keys).firstIndex(of: String(year)) != nil {
-            return
-        }
-        
-        dates[String(year)] = [Date]()
-        let firstDate = calendar.date(from: DateComponents(calendar: calendar, year: year, month: 2, day: 0))!
-        for i in (0 ..< 12) {
-            if let date = calendar.date(byAdding: .month, value: i, to: firstDate) {
-                self.dates[String(year)]!.append(date)
-            }
-        }
-        
-        if willBeReload {
-            yearlyTableView.reloadData()
+            dest.baseDate = yearGenerator.baseDate
         }
     }
 }
 
-extension YearlyCalendarViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-}
 extension YearlyCalendarViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        yearMetadata.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dates.count * 2
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let metadata = yearMetadata[section]
+        return dateFormatter.string(from: metadata.date)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        defer {
-            DispatchQueue.main.async { [self] in
-                valueApplyingCurrentDate = valueOffset()
-                oldOffset = tableView.contentOffset
-            }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: YearlyCalendarTableViewCell.self), for: indexPath) as? YearlyCalendarTableViewCell else {
+            return UITableViewCell()
         }
         
-        let year = dateFormatter.string(from: currentDateDisplayed)
+        let metadata = yearMetadata[indexPath.row]
+        cell.monthMetadata = metadata.monthsMetadata
         
-        if indexPath.row.isMultiple(of: 2) {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: YearlyCalendarHeaderTableViewCell.reuseIdentifier, for: indexPath) as! YearlyCalendarHeaderTableViewCell
-            cell.yearLabel.text = year
-            
-            let valueNeedToAdd = year == firstYear ? -1 : (year == lastYear ? 1 : 0)
-            
-            if valueNeedToAdd != 0 {
-                
-                guard let dateApplyValue = calendar.date(byAdding: .year, value: valueNeedToAdd, to: currentDateDisplayed) else {
-                    return cell
-                }
-                
-                if Array(dates.keys).firstIndex(of: dateFormatter.string(from: dateApplyValue)) == nil {
-                    appendYearMetaDates(in: dateApplyValue)
-                    if let secondDate = calendar.date(byAdding: .year, value: valueNeedToAdd, to: dateApplyValue) {
-                        appendYearMetaDates(in: secondDate, willBeReload: true)
-                    }
-                }
-            }
-            
-            if valueApplyingCurrentDate < 0 {
-                if let date = calendar.date(byAdding: .year, value: valueApplyingCurrentDate, to: currentDateDisplayed) {
-                    print("head", valueApplyingCurrentDate, currentDateDisplayed, date)
-                    currentDateDisplayed = date
-                }
-            }
-            
-            return cell
-            
-        } else {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: YearlyCalendarTableViewCell.reuseIdentifier, for: indexPath) as! YearlyCalendarTableViewCell
-            
-            cell.segueDelegate = self
-            cell.dataFetchDelegate = self
-//            cell.datesInARow = dates[year]
-            cell.year = year
-            
-            if let VCs = dateVCs[year] {
-                cell.datesinCells = VCs
-            }
-            
-            if valueApplyingCurrentDate > 0 {
-                if let date = calendar.date(byAdding: .year, value: valueApplyingCurrentDate, to: currentDateDisplayed) {
-                    print("foot", valueApplyingCurrentDate, currentDateDisplayed, date)
-                    currentDateDisplayed = date
-                }
-            }
-            
-            return cell
-        }
+        return cell
     }
 }
 
@@ -188,11 +74,5 @@ extension YearlyCalendarViewController: YearlyTableViewSegueDelegate {
             withIdentifier: String(describing: MonthlyCalendarViewController.self),
             sender: date
         )
-    }
-}
-
-extension YearlyCalendarViewController: YearlyTableViewDateFetchDelegate {
-    func sendCommonCalendars(_ calendars: [UIViewController], year: String) {
-        self.dateVCs[year] = calendars
     }
 }
