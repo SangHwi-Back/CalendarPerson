@@ -21,7 +21,7 @@ class CommonCalendarViewController: UIViewController {
     
     var startDate: Date!
     var dateFormatter = DateFormatter()
-    var daysGenerator: DaysGenerator!
+    var daysGenerator: DaysOfMonthInCalendar!
     
     var calendarSize: CGSize!
     var showHeaderView: Bool = false
@@ -29,7 +29,7 @@ class CommonCalendarViewController: UIViewController {
     var selectCellEnable: Bool = false
     
     var layout: UICollectionViewFlowLayout!
-    var daysInMonth: [Day]!
+    var daysInMonth: [DayMetadata]!
     
     var itemViewContainer: UIView!
 //    lazy var itemViewSize = CGSize(width: Double(calendarSize.width / 7), height: Double(calendarSize.width / 7))
@@ -101,7 +101,7 @@ class CommonCalendarViewController: UIViewController {
 }
 
 fileprivate extension UIView {
-    func setViewContents(date: Day) {
+    func setViewContents(date: DayMetadata) {
         let label = UILabel()
         self.addSubview(label)
         label.textAlignment = .center

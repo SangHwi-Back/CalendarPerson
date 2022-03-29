@@ -14,7 +14,7 @@ class MonthlyCalendarTableViewCell: UITableViewCell {
     var layout: UICollectionViewFlowLayout!
     var masterVC: UIViewController?
     
-    var days: [Day]? {
+    var days: [DayMetadata]? {
         didSet {
             calendarCollectionView.reloadData()
         }
@@ -47,7 +47,7 @@ extension MonthlyCalendarTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MonthlyCollectionViewCell.reuseIdentifier, for: indexPath) as! MonthlyCollectionViewCell
-        cell.dateLabel.text = (days?[indexPath.row].isWithinDisplayedMonth ?? false) ? days?[indexPath.row].number : ""
+//        cell.dateLabel.text = (days?[indexPath.row].isWithinDisplayedMonth ?? false) ? days?[indexPath.row].number : ""
         return cell
     }
 }

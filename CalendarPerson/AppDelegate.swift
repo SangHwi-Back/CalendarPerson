@@ -14,11 +14,9 @@ class AppDelegate:
 {
 
     var sizeVertical: CGRect?
-    var daysGenerator: DaysGenerator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.sizeVertical = UIDevice.current.accessibilityFrame
-        self.daysGenerator = DaysGenerator(baseDate: Date())
         return true
     }
     
