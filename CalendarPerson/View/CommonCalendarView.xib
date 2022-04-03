@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,29 +37,8 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V6q-5h-R4n">
-                            <rect key="frame" x="0.0" y="30" width="299" height="276"/>
+                            <rect key="frame" x="0.0" y="30" width="299" height="306"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="276" id="Ot0-iR-UUH"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GjU-Rg-mpG">
-                            <rect key="frame" x="0.0" y="306" width="299" height="30"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvH-Ta-OsD">
-                                    <rect key="frame" x="0.0" y="5" width="299" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="GaQ-wx-XNk"/>
-                                <constraint firstItem="mvH-Ta-OsD" firstAttribute="leading" secondItem="GjU-Rg-mpG" secondAttribute="leading" id="LGn-UR-OrC"/>
-                                <constraint firstAttribute="trailing" secondItem="mvH-Ta-OsD" secondAttribute="trailing" id="TZX-vK-q5M"/>
-                                <constraint firstItem="mvH-Ta-OsD" firstAttribute="centerY" secondItem="GjU-Rg-mpG" secondAttribute="centerY" id="YbT-Yc-VU1"/>
-                            </constraints>
                         </view>
                     </subviews>
                 </stackView>
@@ -69,16 +48,12 @@
             <constraints>
                 <constraint firstItem="AzX-1I-eJl" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="1YD-bC-AmL"/>
                 <constraint firstItem="AzX-1I-eJl" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="BVY-qQ-WnM"/>
-                <constraint firstAttribute="height" secondItem="AzX-1I-eJl" secondAttribute="height" id="brB-Iv-tno"/>
                 <constraint firstItem="AzX-1I-eJl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rzX-MV-0H7"/>
                 <constraint firstItem="AzX-1I-eJl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wkK-e7-3Df"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="contentView" destination="V6q-5h-R4n" id="JX2-dc-vgA"/>
-                <outlet property="contentViewHeightLayoutConstraint" destination="Ot0-iR-UUH" id="OPS-uY-R1a"/>
-                <outlet property="footerLabel" destination="mvH-Ta-OsD" id="yLk-2E-M16"/>
-                <outlet property="footerView" destination="GjU-Rg-mpG" id="Tbq-Pb-QK5"/>
                 <outlet property="headerLabel" destination="E6Q-qQ-4Qr" id="XDc-se-WTo"/>
                 <outlet property="headerView" destination="lAO-WB-65y" id="8fu-yL-NYc"/>
                 <outlet property="parentStackView" destination="AzX-1I-eJl" id="Ei1-Zw-hB1"/>

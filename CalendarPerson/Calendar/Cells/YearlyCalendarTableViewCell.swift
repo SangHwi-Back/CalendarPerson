@@ -9,34 +9,44 @@ import UIKit
 
 class YearlyCalendarTableViewCell: UITableViewCell, UICollectionViewDataSource {
     
-    @IBOutlet weak var calendarCollectionView: UICollectionView!
-    
+    @IBOutlet weak var monthsInYearCollectionView: UICollectionView!
+    var indexYearInRow: Int = 0
     var monthMetadata: [MonthMetadata]?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         let layout = UICollectionViewFlowLayout()
-        let width = (self.frame.width/3)-10
-        layout.minimumLineSpacing = 5
-        layout.itemSize = CGSize(width: width, height: width * 4)
+        layout.minimumInteritemSpacing = 4
+        layout.minimumLineSpacing = 16
+        let width = (monthsInYearCollectionView.frame.width / CGFloat(3)) - layout.minimumInteritemSpacing
+        layout.itemSize = CGSize(width: width, height: width)
         
-        calendarCollectionView.collectionViewLayout = layout
-        calendarCollectionView.dataSource = self
-        calendarCollectionView.reloadData()
+        monthsInYearCollectionView.collectionViewLayout = layout
+        monthsInYearCollectionView.dataSource = self
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let result = monthMetadata?.count ?? 0
-        return result
+//        let result = monthMetadata?.count ?? 0
+//        return result
+        return 3
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: YearlyCalendarCollectionViewCell.self), for: indexPath) as? YearlyCalendarCollectionViewCell else {
-            return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: YearlyCalendarCollectionViewCell.self), for: indexPath)
+        
+        if let commonCalendar = cell.subviews.first(where: {v in v is CommonCalendarView}) as? CommonCalendarView {
+            commonCalendar.monthMetadata = monthMetadata![indexPath.row]
+        } else {
+            if let commonCalendar = Bundle.main.loadNibNamed("CommonCalendarView", owner: nil)?.first as? CommonCalendarView {
+                commonCalendar.frame = cell.bounds
+                commonCalendar.monthMetadata = monthMetadata![indexPath.row + (indexYearInRow * 3)]
+                cell.addSubview(commonCalendar)
+            } else {
+                print("What??")
+            }
         }
 
-        cell.metadata = monthMetadata?[indexPath.row]
         return cell
     }
 }

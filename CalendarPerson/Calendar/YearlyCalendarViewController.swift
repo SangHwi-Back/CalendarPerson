@@ -17,6 +17,8 @@ class YearlyCalendarViewController: UIViewController {
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var yearlyTableView: UITableView!
     
+    @IBOutlet weak var settingButton: UIBarButtonItem!
+    
     private var dateFormatter = DateFormatter()
     private var yearGenerator = DaysOfYearInCalendar(current: Calendar.current, formatString: "d")!
     private var yearMetadata = [YearMetadata]()
@@ -39,6 +41,10 @@ class YearlyCalendarViewController: UIViewController {
             dest.baseDate = yearGenerator.baseDate
         }
     }
+    
+    @IBAction func settingButtonTouchUpInside(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "SettingViewController", sender: self)
+    }
 }
 
 extension YearlyCalendarViewController: UITableViewDataSource {
@@ -47,7 +53,7 @@ extension YearlyCalendarViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        4
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -61,8 +67,9 @@ extension YearlyCalendarViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let metadata = yearMetadata[indexPath.row]
+        let metadata = yearMetadata[indexPath.section]
         cell.monthMetadata = metadata.monthsMetadata
+        cell.indexYearInRow = indexPath.row
         
         return cell
     }

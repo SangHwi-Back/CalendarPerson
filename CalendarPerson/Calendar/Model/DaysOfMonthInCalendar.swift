@@ -15,6 +15,8 @@ struct MonthMetadata {
     let firstDayInMonth: Int
     let endDayInMonth: Int
     
+    var monthName: String
+    
     var dayMetadata: [DayMetadata]?
 }
 
@@ -82,7 +84,8 @@ class DaysOfMonthInCalendar: DayInCalendar {
             components: localCalendar.dateComponents(daysComponents, from: baseDate),
             numberOfDays: numberOfDaysInMonth,
             firstDayInMonth: firstDay,
-            endDayInMonth: endDay
+            endDayInMonth: endDay,
+            monthName: getMonthName()
         )
         
         monthMetadata!.dayMetadata = try getDaysInMonthMetadata()
@@ -135,6 +138,17 @@ class DaysOfMonthInCalendar: DayInCalendar {
         }
         
         return result
+    }
+    
+    func getMonthName() -> String {
+        let oldFormat = dateFormatter.dateFormat
+        dateFormatter.dateFormat = "MMM"
+        
+        defer {
+            dateFormatter.dateFormat = oldFormat
+        }
+        
+        return dateFormatter.string(from: baseDate)
     }
     
     enum DataError: String, Error {
