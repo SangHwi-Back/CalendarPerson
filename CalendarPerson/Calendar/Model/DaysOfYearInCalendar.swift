@@ -11,7 +11,7 @@ struct YearMetadata {
     let date: Date
     let components: DateComponents
     
-    var monthsMetadata: [MonthMetadata]?
+    var monthsMetadata: [Int: MonthMetadata]?
 }
 
 class DaysOfYearInCalendar: DaysOfMonthInCalendar {
@@ -25,16 +25,26 @@ class DaysOfYearInCalendar: DaysOfMonthInCalendar {
     
     // MARK: - Designated Init
     
-    override init?(current calendar: Calendar, formatString format: String, date: Date = Date()) {
-        super.init(current: calendar, formatString: format, date: date)
+    convenience init(current calendar: Calendar, formatString format: String, date: Date = Date(), startYear: Int? = nil) {
         
-        do {
-            let metadata = try getYearMetadata()
-            self.yearMetadata = metadata
-        } catch {
-            print(error)
-            return nil
+        let comp = calendar.dateComponents([.year], from: date)
+        var date = date
+        
+        guard
+            let startYear = startYear,
+            let currentYear = comp.year,
+            let startDate = calendar.date(byAdding: .year, value: startYear - currentYear, to: date)
+        else {
+            self.init(current: calendar, formatString: format, date: date)
+            return
         }
+        
+        date = startDate
+        self.init(current: calendar, formatString: format, date: date)
+    }
+    
+    override init(current calendar: Calendar, formatString format: String, date: Date = Date()) {
+        super.init(current: calendar, formatString: format, date: date)
     }
     
     func getYearMetadata() throws -> YearMetadata {
@@ -49,6 +59,7 @@ class DaysOfYearInCalendar: DaysOfMonthInCalendar {
         )
         
         metadata.monthsMetadata = getDaysOfYearMetadata()
+        yearMetadata = metadata
         return metadata
     }
     
@@ -70,23 +81,40 @@ class DaysOfYearInCalendar: DaysOfMonthInCalendar {
         return try getYearMetadata()
     }
     
-    private func getDaysOfYearMetadata() -> [MonthMetadata] {
-        guard let metadata = try? getMonthMetadata() else {
-            return [MonthMetadata]()
+    private func getDaysOfYearMetadata() -> [Int: MonthMetadata] {
+        
+        let oldBaseDate = baseDate
+        let currentMonth = localCalendar.component(.month, from: baseDate)
+        
+        guard let date = localCalendar.date(byAdding: .month, value: ((currentMonth-1) * -1), to: oldBaseDate) else {
+            return [Int:MonthMetadata]()
         }
         
-        var result = [metadata]
+        setDate(base: date)
         
-        for _ in 2...12 {
+        guard let metadata = try? getMonthMetadata() else {
+            return [Int:MonthMetadata]()
+        }
+        
+        var yearResult = [Int: MonthMetadata]()
+        yearResult[1] = metadata
+        
+        for position in 2...12 {
             if let nextdata = try? getNextMonthMetadata() {
-                result.append(nextdata)
+                yearResult[position] = nextdata
             }
         }
         
-        return result
+        setDate(base: oldBaseDate)
+        
+        return yearResult
     }
     
     enum DataError: String, Error {
         case YearMetadataGenerateError
+    }
+    
+    func dateCompare(with date: Date) -> Bool {
+        return localCalendar.component(.year, from: baseDate) == localCalendar.component(.year, from: date)
     }
 }

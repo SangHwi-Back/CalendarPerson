@@ -10,10 +10,9 @@ import Foundation
 struct MonthMetadata {
     let date: Date
     let components: DateComponents
-    let numberOfDays: Int
-    
-    let firstDayInMonth: Int
-    let endDayInMonth: Int
+    var numberOfDays: Int {
+        dayMetadata?.count ?? 0
+    }
     
     var monthName: String
     
@@ -31,7 +30,7 @@ class DaysOfMonthInCalendar: DayInCalendar {
     
     /// 파라미터로 전달되는 Bool 값에 따라 메타데이터가 가리키는 Month의 첫째날 혹은 마지막날 Date 객체를 가져온다.
     private func getEdgeDate(atFirst: Bool) -> Date? {
-        let num = (atFirst ? -1 : 1)
+        let num = (atFirst ? -1 : 0)
         guard let date = localCalendar.date(byAdding: .month, value: num, to: baseDate) else { return nil}
         return localCalendar.date(byAdding: .day, value: (num * -1), to: date)
     }
@@ -48,49 +47,13 @@ class DaysOfMonthInCalendar: DayInCalendar {
         return localCalendar.dateComponents([.day], from: targetDate)
     }
     
-    // MARK: - Date Etcs...
-    
-    private var numberOfDaysInMonth: Int {
-        self.localCalendar.range(of: .day, in: .month, for: self.baseDate)?.count ?? 0
-    }
-    
     // MARK: - Designated Init
     
-    init?(current calendar: Calendar, formatString format: String, date: Date = Date()) {
+    init(current calendar: Calendar, formatString format: String, date: Date = Date()) {
         super.init(format, in: date)
-        
-        do {
-            let metadata = try getMonthMetadata()
-            self.monthMetadata = metadata
-        } catch {
-            print(error)
-            return nil
-        }
     }
     
     // MARK: - Common Utilities
-    
-    func getMonthMetadata() throws -> MonthMetadata {
-        
-        guard
-            let firstDay = monthComponentsInFirstDay?.day,
-            let endDay = monthComponentsInEndDay?.day
-        else {
-            throw DataError.MonthMetadataGenerateError
-        }
-        
-        monthMetadata = MonthMetadata(
-            date: baseDate,
-            components: localCalendar.dateComponents(daysComponents, from: baseDate),
-            numberOfDays: numberOfDaysInMonth,
-            firstDayInMonth: firstDay,
-            endDayInMonth: endDay,
-            monthName: getMonthName()
-        )
-        
-        monthMetadata!.dayMetadata = try getDaysInMonthMetadata()
-        return monthMetadata!
-    }
     
     func getPreviousMonthMetadata(from metadata: MonthMetadata? = nil) throws -> MonthMetadata {
         guard let date = localCalendar.date(byAdding: .month, value: -1, to: metadata?.date ?? baseDate) else {
@@ -110,16 +73,29 @@ class DaysOfMonthInCalendar: DayInCalendar {
         return try getMonthMetadata()
     }
     
+    func getMonthMetadata() throws -> MonthMetadata {
+        
+        monthMetadata = MonthMetadata(
+            date: baseDate,
+            components: localCalendar.dateComponents(daysComponents, from: baseDate),
+            monthName: getMonthName()
+        )
+        
+        monthMetadata!.dayMetadata = try getDaysInMonthMetadata()
+        return monthMetadata!
+    }
+    
     private func getDaysInMonthMetadata() throws -> [DayMetadata] {
         
         var result = [DayMetadata]()
         guard
-            let numberOfDays = monthMetadata?.numberOfDays,
             var date = getEdgeDate(atFirst: true),
-            let monthOffset = monthComponentsInFirstDay?.day
+            let numberOfDays = localCalendar.range(of: .day, in: .month, for: date)?.count
         else {
             return result
         }
+        
+        let monthOffset = localCalendar.component(.weekday, from: date)
         
         for day in 1...monthOffset+numberOfDays {
             result.append(
@@ -127,7 +103,7 @@ class DaysOfMonthInCalendar: DayInCalendar {
                     date: date,
                     components: localCalendar.dateComponents([.year, .month], from: date),
                     isSelected: false,
-                    day: "\(day)",
+                    day: (monthOffset >= day ? "" : "\(day-monthOffset)"),
                     isOccupied: (monthOffset >= day)
                 )
             )

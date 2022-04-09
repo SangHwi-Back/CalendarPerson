@@ -14,7 +14,7 @@ class DaysGeneratorInCalendar: DaysReformatter {
     private(set) var baseDate: Date
     private(set) var localCalendar = Calendar.current
     private(set) var dateFormatter = DateFormatter()
-    private(set) var daysComponents: Set<Calendar.Component> = [.year,.month,.day]
+    private(set) var daysComponents: Set<Calendar.Component> = [.year,.month,.day,.weekOfMonth]
     
     // MARK: - Designated Init
     

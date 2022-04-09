@@ -39,15 +39,9 @@ class DayInCalendar: DaysGeneratorInCalendar {
     func getDayMetadata() throws -> DayMetadata {
         
         let component = localCalendar.dateComponents(daysComponents, from: baseDate)
+        guard let day = component.day else { throw DataError.DaysMetadataGenerateError }
         
-        guard
-            let day = component.day,
-            let firstDateInMonth = localCalendar.date(byAdding: .month, value: 0, to: baseDate)
-        else {
-            throw DataError.DaysMetadataGenerateError
-        }
-        
-        let firstDay = localCalendar.dateComponents(daysComponents, from: firstDateInMonth).day ?? 0
+        let firstDay = localCalendar.component(.weekday, from: baseDate)
         
         return DayMetadata(
             date: baseDate,

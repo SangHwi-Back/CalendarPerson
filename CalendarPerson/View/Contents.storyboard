@@ -47,7 +47,7 @@
                                                     <rect key="frame" x="16" y="11" width="343" height="110"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="110" id="QmS-Lm-JHo"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="110" id="QmS-Lm-JHo"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DZT-Pq-sgJ">
                                                         <size key="itemSize" width="128" height="128"/>

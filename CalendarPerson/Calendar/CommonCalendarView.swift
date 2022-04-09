@@ -66,12 +66,6 @@ class CommonCalendarView: UIView {
             rowNumber += (index % 7 == 0 ? 1 : 0)
             generateItemView(at: index, day: dataOfDay.day, on: rowNumber)
         }
-        
-//        if let fontSize = currentSetLabel?.font.pointSize {
-//            commonCalendarLabels.forEach { label in
-//                label.font = UIFont(name: label.font.fontName, size: fontSize)
-//            }
-//        }
     }
     
     func generateItemView(at index: Int, day: String, on rowNumber: Int) {
@@ -91,7 +85,6 @@ class CommonCalendarView: UIView {
         label.minimumScaleFactor = CGFloat(0.3)
         
         contentView.addSubview(label)
-//        commonCalendarLabels.append(label)
         
         label.textAlignment = .right
         label.text = day

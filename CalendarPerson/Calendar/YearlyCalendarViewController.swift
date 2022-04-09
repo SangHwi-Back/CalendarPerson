@@ -20,17 +20,23 @@ class YearlyCalendarViewController: UIViewController {
     @IBOutlet weak var settingButton: UIBarButtonItem!
     
     private var dateFormatter = DateFormatter()
-    private var yearGenerator = DaysOfYearInCalendar(current: Calendar.current, formatString: "d")!
+    private var yearGenerator = DaysOfYearInCalendar(current: Calendar.current, formatString: "d", startYear: 2017)
     private var yearMetadata = [YearMetadata]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dateFormatter.dateFormat = "y"
+        let date = Date()
         
         do {
-            yearMetadata.append(try yearGenerator.getPreviousYearMetadata())
+            
             yearMetadata.append(try yearGenerator.getYearMetadata())
-            yearMetadata.append(try yearGenerator.getNextYearMetadata())
+            
+            while true {
+                guard yearGenerator.dateCompare(with: date) == false else { break }
+                yearMetadata.append(try yearGenerator.getNextYearMetadata())
+            }
+            
         } catch {
             print(error)
         }
