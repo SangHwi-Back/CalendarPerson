@@ -18,6 +18,7 @@ class DaysOfYearInCalendar: DaysOfMonthInCalendar {
     
     // MARK: - Local property
     private(set) var yearMetadata: YearMetadata?
+    private(set) var currentYear: Int
     
     private var firstDayOfYear: Date? {
         localCalendar.date(byAdding: .year, value: 0, to: baseDate)
@@ -44,7 +45,18 @@ class DaysOfYearInCalendar: DaysOfMonthInCalendar {
     }
     
     override init(current calendar: Calendar, formatString format: String, date: Date = Date()) {
+        self.currentYear = calendar.dateComponents([.year], from: date).year!
         super.init(current: calendar, formatString: format, date: date)
+    }
+    
+    @discardableResult
+    func setYear(_ year: Int) -> Bool {
+        guard let date = localCalendar.date(bySetting: .year, value: year, of: baseDate) else {
+            return false
+        }
+        
+        setDate(base: date)
+        return true
     }
     
     func getYearMetadata() throws -> YearMetadata {

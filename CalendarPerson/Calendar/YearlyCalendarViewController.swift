@@ -20,25 +20,38 @@ class YearlyCalendarViewController: UIViewController {
     @IBOutlet weak var settingButton: UIBarButtonItem!
     
     private var dateFormatter = DateFormatter()
-    private var yearGenerator = DaysOfYearInCalendar(current: Calendar.current, formatString: "d", startYear: 2017)
+    private var yearGenerator: DaysOfYearInCalendar!
     private var yearMetadata = [YearMetadata]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let year = Calendar.current.dateComponents([.year], from: Date()).year!
+        let rangeOfYear = Range(year-7...year+7)
+        
         dateFormatter.dateFormat = "y"
-        let date = Date()
+        yearGenerator = DaysOfYearInCalendar(current: Calendar.current, formatString: "d", startYear: rangeOfYear.first)
         
         do {
-            
-            yearMetadata.append(try yearGenerator.getYearMetadata())
-            
-            while true {
-                guard yearGenerator.dateCompare(with: date) == false else { break }
-                yearMetadata.append(try yearGenerator.getNextYearMetadata())
+            for year in rangeOfYear {
+                if year == yearGenerator.currentYear {
+                    yearMetadata.append(try yearGenerator.getYearMetadata())
+                } else if year > yearGenerator.currentYear {
+                    yearMetadata.append(try yearGenerator.getNextYearMetadata())
+                } else if year < yearGenerator.currentYear {
+                    yearMetadata.append(try yearGenerator.getPreviousYearMetadata())
+                }
             }
-            
         } catch {
             print(error)
+        }
+        
+        if yearlyTableView.numberOfSections > 4 {
+            yearlyTableView.scrollToRow(
+                at: IndexPath(row: 0, section: 7),
+                at: .top,
+                animated: false
+            )
         }
     }
     
