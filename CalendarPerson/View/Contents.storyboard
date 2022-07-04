@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--year-->
+        <!--YEAR-->
         <scene sceneID="h4a-4x-iQX">
             <objects>
                 <viewController storyboardIdentifier="YearlyCalendarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DeH-AH-ISL" customClass="YearlyCalendarViewController" customModule="CalendarPerson" customModuleProvider="target" sceneMemberID="viewController">
@@ -97,7 +97,7 @@
                             <constraint firstItem="c61-er-nYW" firstAttribute="trailing" secondItem="JQL-UV-zko" secondAttribute="trailing" id="fdI-l1-QYU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="year" id="f7f-pJ-33m">
+                    <navigationItem key="navigationItem" title="YEAR" id="f7f-pJ-33m">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="search" id="ijg-pa-Tbj"/>
                             <barButtonItem systemItem="add" id="Uth-cr-dqB"/>
@@ -118,6 +118,7 @@
         <!--View Controller-->
         <scene sceneID="sie-uK-Y95">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TkN-0y-HKs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SettingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z6z-p1-dZH" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sPP-Bb-OJj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -127,11 +128,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="SwQ-cc-iTe"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TkN-0y-HKs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="974" y="869"/>
         </scene>
-        <!--month-->
+        <!--MONTH-->
         <scene sceneID="08r-lZ-cCW">
             <objects>
                 <viewController storyboardIdentifier="MonthlyCalendarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Syg-im-dVx" customClass="MonthlyCalendarViewController" customModule="CalendarPerson" customModuleProvider="target" sceneMemberID="viewController">
@@ -296,7 +296,7 @@
                             <constraint firstItem="hpn-eU-B7E" firstAttribute="top" secondItem="JTg-nK-NZS" secondAttribute="top" id="vdX-li-10N"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="month" id="44z-0w-F4m">
+                    <navigationItem key="navigationItem" title="MONTH" id="44z-0w-F4m">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="aa6-gi-T2E"/>
                             <barButtonItem systemItem="search" id="vXu-BM-9Qk"/>
@@ -312,7 +312,7 @@
             </objects>
             <point key="canvasLocation" x="1779.7101449275365" y="137.94642857142856"/>
         </scene>
-        <!--day-->
+        <!--DAY-->
         <scene sceneID="hwq-iB-I97">
             <objects>
                 <viewController storyboardIdentifier="DailyScheduleViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cvd-BP-RRl" customClass="DailyScheduleViewController" customModule="CalendarPerson" customModuleProvider="target" sceneMemberID="viewController">
@@ -603,7 +603,7 @@
                             <constraint firstItem="AE2-Bi-NXS" firstAttribute="bottom" secondItem="jgb-9A-oog" secondAttribute="bottom" id="oPS-Gj-TqL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="day" id="6pG-TW-0jf">
+                    <navigationItem key="navigationItem" title="DAY" id="6pG-TW-0jf">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="w1E-p2-410"/>
                             <barButtonItem systemItem="search" id="z1F-Hm-GDk"/>
@@ -619,7 +619,7 @@
             </objects>
             <point key="canvasLocation" x="2605.7971014492755" y="137.94642857142856"/>
         </scene>
-        <!--detail-->
+        <!--DETAIL-->
         <scene sceneID="vf6-Zw-ree">
             <objects>
                 <viewController storyboardIdentifier="ScheduleDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rtY-A9-Jdc" customClass="ScheduleDetailViewController" customModule="CalendarPerson" customModuleProvider="target" sceneMemberID="viewController">
@@ -815,7 +815,7 @@
                             <constraint firstItem="c8m-3r-Ekh" firstAttribute="trailing" secondItem="P1t-VT-5vC" secondAttribute="trailing" constant="16" id="v5b-e8-JCY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="detail" id="3vQ-Tw-Di6"/>
+                    <navigationItem key="navigationItem" title="DETAIL" id="3vQ-Tw-Di6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yGv-9k-k0B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

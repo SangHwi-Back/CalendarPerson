@@ -43,18 +43,6 @@ class CommonCalendarView: UIView {
         self.monthMetadata = monthMetadata
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     func initializeCalendarView() {
         
         guard let dayMetadata = monthMetadata.dayMetadata else { return }
@@ -94,13 +82,4 @@ class CommonCalendarView: UIView {
     }
 }
 
-class CommonCalendarDayLabel: UILabel {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-}
+class CommonCalendarDayLabel: UILabel { }
