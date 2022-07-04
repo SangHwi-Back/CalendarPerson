@@ -10,6 +10,11 @@
 		170C9CAA1F44A8E9D06A2613 /* Pods_CalendarPerson_CalendarPersonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20878D19D07D8B1C89FB4EEF /* Pods_CalendarPerson_CalendarPersonUITests.framework */; };
 		1B36219227F0132F00E18837 /* DaysReformatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B36219127F0132F00E18837 /* DaysReformatter.swift */; };
 		1B36219427F0333D00E18837 /* DaysOfYearInCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B36219327F0333D00E18837 /* DaysOfYearInCalendar.swift */; };
+		1B3B7FDB2872A5C7001C497C /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1B3B7FDA2872A5C7001C497C /* Realm */; };
+		1B3B7FDD2872A5C7001C497C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1B3B7FDC2872A5C7001C497C /* RealmSwift */; };
+		1B3B7FE02872A5E8001C497C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 1B3B7FDF2872A5E8001C497C /* RxCocoa */; };
+		1B3B7FE22872A5E8001C497C /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 1B3B7FE12872A5E8001C497C /* RxRelay */; };
+		1B3B7FE42872A5E8001C497C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1B3B7FE32872A5E8001C497C /* RxSwift */; };
 		1B43788A2730E60700A1C214 /* DaysOfMonthInCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4378892730E60700A1C214 /* DaysOfMonthInCalendar.swift */; };
 		1B43788C2730E76500A1C214 /* CalendarMonthsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B43788B2730E76500A1C214 /* CalendarMonthsFactory.swift */; };
 		1B50164227EB43F600912E8D /* DaysGeneratorInCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50164127EB43F600912E8D /* DaysGeneratorInCalendar.swift */; };
@@ -92,13 +97,7 @@
 		1BFAC70D2725842D008A3346 /* CalendarPersonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPersonUITests.swift; sourceTree = "<group>"; };
 		1BFAC70F2725842D008A3346 /* CalendarPersonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPersonUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		20878D19D07D8B1C89FB4EEF /* Pods_CalendarPerson_CalendarPersonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarPerson_CalendarPersonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		21AD51E3E85F6E0294A7862B /* Pods-CalendarPersonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarPersonTests.debug.xcconfig"; path = "Target Support Files/Pods-CalendarPersonTests/Pods-CalendarPersonTests.debug.xcconfig"; sourceTree = "<group>"; };
-		2423B0FB571B8C6525CDCD6D /* Pods-CalendarPerson-CalendarPersonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarPerson-CalendarPersonUITests.release.xcconfig"; path = "Target Support Files/Pods-CalendarPerson-CalendarPersonUITests/Pods-CalendarPerson-CalendarPersonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		400C62FF2CF9F3A7AA43489E /* Pods_CalendarPersonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarPersonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B3894B176C5F163705DF490 /* Pods-CalendarPerson.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarPerson.release.xcconfig"; path = "Target Support Files/Pods-CalendarPerson/Pods-CalendarPerson.release.xcconfig"; sourceTree = "<group>"; };
-		7DD5EEB293A565AE9B8AD0BC /* Pods-CalendarPerson-CalendarPersonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarPerson-CalendarPersonUITests.debug.xcconfig"; path = "Target Support Files/Pods-CalendarPerson-CalendarPersonUITests/Pods-CalendarPerson-CalendarPersonUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		955879BFE6BED45F191F8911 /* Pods-CalendarPerson.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarPerson.debug.xcconfig"; path = "Target Support Files/Pods-CalendarPerson/Pods-CalendarPerson.debug.xcconfig"; sourceTree = "<group>"; };
-		C9C038C6CB5D040D46D1EC10 /* Pods-CalendarPersonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarPersonTests.release.xcconfig"; path = "Target Support Files/Pods-CalendarPersonTests/Pods-CalendarPersonTests.release.xcconfig"; sourceTree = "<group>"; };
 		F70B979BAA709436316F3BDE /* Pods_CalendarPerson.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarPerson.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -107,6 +106,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B3B7FE42872A5E8001C497C /* RxSwift in Frameworks */,
+				1B3B7FE22872A5E8001C497C /* RxRelay in Frameworks */,
+				1B3B7FDD2872A5C7001C497C /* RealmSwift in Frameworks */,
+				1B3B7FDB2872A5C7001C497C /* Realm in Frameworks */,
+				1B3B7FE02872A5E8001C497C /* RxCocoa in Frameworks */,
 				ACD1ED5E0FC90F0425D74E91 /* Pods_CalendarPerson.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,7 +206,6 @@
 				1BFAC7022725842D008A3346 /* CalendarPersonTests */,
 				1BFAC70C2725842D008A3346 /* CalendarPersonUITests */,
 				1BFAC6EA2725842B008A3346 /* Products */,
-				5DBF81E37F2F891E415C9960 /* Pods */,
 				E3C88A8F3E32B13B0F137045 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -252,19 +255,6 @@
 			path = CalendarPersonUITests;
 			sourceTree = "<group>";
 		};
-		5DBF81E37F2F891E415C9960 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				955879BFE6BED45F191F8911 /* Pods-CalendarPerson.debug.xcconfig */,
-				6B3894B176C5F163705DF490 /* Pods-CalendarPerson.release.xcconfig */,
-				7DD5EEB293A565AE9B8AD0BC /* Pods-CalendarPerson-CalendarPersonUITests.debug.xcconfig */,
-				2423B0FB571B8C6525CDCD6D /* Pods-CalendarPerson-CalendarPersonUITests.release.xcconfig */,
-				21AD51E3E85F6E0294A7862B /* Pods-CalendarPersonTests.debug.xcconfig */,
-				C9C038C6CB5D040D46D1EC10 /* Pods-CalendarPersonTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		E3C88A8F3E32B13B0F137045 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +283,13 @@
 			dependencies = (
 			);
 			name = CalendarPerson;
+			packageProductDependencies = (
+				1B3B7FDA2872A5C7001C497C /* Realm */,
+				1B3B7FDC2872A5C7001C497C /* RealmSwift */,
+				1B3B7FDF2872A5E8001C497C /* RxCocoa */,
+				1B3B7FE12872A5E8001C497C /* RxRelay */,
+				1B3B7FE32872A5E8001C497C /* RxSwift */,
+			);
 			productName = CalendarPerson;
 			productReference = 1BFAC6E92725842B008A3346 /* CalendarPerson.app */;
 			productType = "com.apple.product-type.application";
@@ -368,6 +365,10 @@
 				Base,
 			);
 			mainGroup = 1BFAC6E02725842B008A3346;
+			packageReferences = (
+				1B3B7FD92872A5C7001C497C /* XCRemoteSwiftPackageReference "realm-swift" */,
+				1B3B7FDE2872A5E8001C497C /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 1BFAC6EA2725842B008A3346 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -710,7 +711,6 @@
 		};
 		1BFAC7142725842D008A3346 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 955879BFE6BED45F191F8911 /* Pods-CalendarPerson.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -741,7 +741,6 @@
 		};
 		1BFAC7152725842D008A3346 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B3894B176C5F163705DF490 /* Pods-CalendarPerson.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -772,7 +771,6 @@
 		};
 		1BFAC7172725842D008A3346 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21AD51E3E85F6E0294A7862B /* Pods-CalendarPersonTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -798,7 +796,6 @@
 		};
 		1BFAC7182725842D008A3346 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9C038C6CB5D040D46D1EC10 /* Pods-CalendarPersonTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -824,7 +821,6 @@
 		};
 		1BFAC71A2725842D008A3346 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7DD5EEB293A565AE9B8AD0BC /* Pods-CalendarPerson-CalendarPersonUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -848,7 +844,6 @@
 		};
 		1BFAC71B2725842D008A3346 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2423B0FB571B8C6525CDCD6D /* Pods-CalendarPerson-CalendarPersonUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -910,6 +905,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1B3B7FD92872A5C7001C497C /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		1B3B7FDE2872A5E8001C497C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1B3B7FDA2872A5C7001C497C /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B3B7FD92872A5C7001C497C /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		1B3B7FDC2872A5C7001C497C /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B3B7FD92872A5C7001C497C /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		1B3B7FDF2872A5E8001C497C /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B3B7FDE2872A5E8001C497C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		1B3B7FE12872A5E8001C497C /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B3B7FDE2872A5E8001C497C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		1B3B7FE32872A5E8001C497C /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B3B7FDE2872A5E8001C497C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1BFAC6E12725842B008A3346 /* Project object */;
 }
