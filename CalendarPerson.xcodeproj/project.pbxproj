@@ -40,7 +40,6 @@
 		1BFAC7042725842D008A3346 /* CalendarPersonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFAC7032725842D008A3346 /* CalendarPersonTests.swift */; };
 		1BFAC70E2725842D008A3346 /* CalendarPersonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFAC70D2725842D008A3346 /* CalendarPersonUITests.swift */; };
 		1BFAC7102725842D008A3346 /* CalendarPersonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFAC70F2725842D008A3346 /* CalendarPersonUITestsLaunchTests.swift */; };
-		ACD1ED5E0FC90F0425D74E91 /* Pods_CalendarPerson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70B979BAA709436316F3BDE /* Pods_CalendarPerson.framework */; };
 		B205BBE13101E88057B50EC1 /* Pods_CalendarPersonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400C62FF2CF9F3A7AA43489E /* Pods_CalendarPersonTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -111,7 +110,6 @@
 				1B3B7FDD2872A5C7001C497C /* RealmSwift in Frameworks */,
 				1B3B7FDB2872A5C7001C497C /* Realm in Frameworks */,
 				1B3B7FE02872A5E8001C497C /* RxCocoa in Frameworks */,
-				ACD1ED5E0FC90F0425D74E91 /* Pods_CalendarPerson.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,11 +270,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1BFAC7132725842D008A3346 /* Build configuration list for PBXNativeTarget "CalendarPerson" */;
 			buildPhases = (
-				F44BE2CF7AF747813C53E54A /* [CP] Check Pods Manifest.lock */,
 				1BFAC6E52725842B008A3346 /* Sources */,
 				1BFAC6E62725842B008A3346 /* Frameworks */,
 				1BFAC6E72725842B008A3346 /* Resources */,
-				CCF17B7296E335358C8E6B11 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -298,7 +294,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1BFAC7162725842D008A3346 /* Build configuration list for PBXNativeTarget "CalendarPersonTests" */;
 			buildPhases = (
-				F7A8C917528F61F6441A55FA /* [CP] Check Pods Manifest.lock */,
 				1BFAC6FB2725842D008A3346 /* Sources */,
 				1BFAC6FC2725842D008A3346 /* Frameworks */,
 				1BFAC6FD2725842D008A3346 /* Resources */,
@@ -317,11 +312,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1BFAC7192725842D008A3346 /* Build configuration list for PBXNativeTarget "CalendarPersonUITests" */;
 			buildPhases = (
-				18FD1C7B4B5C6FEEA83BB1C3 /* [CP] Check Pods Manifest.lock */,
 				1BFAC7052725842D008A3346 /* Sources */,
 				1BFAC7062725842D008A3346 /* Frameworks */,
 				1BFAC7072725842D008A3346 /* Resources */,
-				96C41BC2716CD537E3CF9C22 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -409,109 +402,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		18FD1C7B4B5C6FEEA83BB1C3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CalendarPerson-CalendarPersonUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		96C41BC2716CD537E3CF9C22 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CalendarPerson-CalendarPersonUITests/Pods-CalendarPerson-CalendarPersonUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CalendarPerson-CalendarPersonUITests/Pods-CalendarPerson-CalendarPersonUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CalendarPerson-CalendarPersonUITests/Pods-CalendarPerson-CalendarPersonUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CCF17B7296E335358C8E6B11 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CalendarPerson/Pods-CalendarPerson-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CalendarPerson/Pods-CalendarPerson-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CalendarPerson/Pods-CalendarPerson-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F44BE2CF7AF747813C53E54A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CalendarPerson-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F7A8C917528F61F6441A55FA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CalendarPersonTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1BFAC6E52725842B008A3346 /* Sources */ = {

@@ -11,12 +11,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func testButtonTouchUpInside(_ sender: UIButton) {
         performSegue(withIdentifier: "contentsSegue", sender: self)
     }
-    
 }
 

@@ -7,9 +7,6 @@
 
 import UIKit
 
-/*
- * startDate
- */
 class CommonCalendarViewController: UIViewController {
     
     @IBOutlet weak var headerView: UIView!
@@ -32,7 +29,6 @@ class CommonCalendarViewController: UIViewController {
     var daysInMonth: [DayMetadata]!
     
     var itemViewContainer: UIView!
-//    lazy var itemViewSize = CGSize(width: Double(calendarSize.width / 7), height: Double(calendarSize.width / 7))
     
     var views: [[UIView]] = [[UIView]]()
     var stackViews: [UIStackView] = [UIStackView]()
@@ -96,7 +92,6 @@ class CommonCalendarViewController: UIViewController {
         }
         
         (contentStackView.arrangedSubviews.last as? UIStackView)?.addArrangedSubview(view)
-//        contentStackView.subviews.last?.addSubview(view)
     }
 }
 
