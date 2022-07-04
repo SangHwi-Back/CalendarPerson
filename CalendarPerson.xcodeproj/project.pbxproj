@@ -11,9 +11,6 @@
 		1B36219427F0333D00E18837 /* DaysOfYearInCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B36219327F0333D00E18837 /* DaysOfYearInCalendar.swift */; };
 		1B3B7FDB2872A5C7001C497C /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1B3B7FDA2872A5C7001C497C /* Realm */; };
 		1B3B7FDD2872A5C7001C497C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1B3B7FDC2872A5C7001C497C /* RealmSwift */; };
-		1B3B7FE02872A5E8001C497C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 1B3B7FDF2872A5E8001C497C /* RxCocoa */; };
-		1B3B7FE22872A5E8001C497C /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 1B3B7FE12872A5E8001C497C /* RxRelay */; };
-		1B3B7FE42872A5E8001C497C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1B3B7FE32872A5E8001C497C /* RxSwift */; };
 		1B43788A2730E60700A1C214 /* DaysOfMonthInCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4378892730E60700A1C214 /* DaysOfMonthInCalendar.swift */; };
 		1B43788C2730E76500A1C214 /* CalendarMonthsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B43788B2730E76500A1C214 /* CalendarMonthsFactory.swift */; };
 		1B50164227EB43F600912E8D /* DaysGeneratorInCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50164127EB43F600912E8D /* DaysGeneratorInCalendar.swift */; };
@@ -94,11 +91,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B3B7FE42872A5E8001C497C /* RxSwift in Frameworks */,
-				1B3B7FE22872A5E8001C497C /* RxRelay in Frameworks */,
 				1B3B7FDD2872A5C7001C497C /* RealmSwift in Frameworks */,
 				1B3B7FDB2872A5C7001C497C /* Realm in Frameworks */,
-				1B3B7FE02872A5E8001C497C /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +256,6 @@
 			packageProductDependencies = (
 				1B3B7FDA2872A5C7001C497C /* Realm */,
 				1B3B7FDC2872A5C7001C497C /* RealmSwift */,
-				1B3B7FDF2872A5E8001C497C /* RxCocoa */,
-				1B3B7FE12872A5E8001C497C /* RxRelay */,
-				1B3B7FE32872A5E8001C497C /* RxSwift */,
 			);
 			productName = CalendarPerson;
 			productReference = 1BFAC6E92725842B008A3346 /* CalendarPerson.app */;
@@ -318,7 +309,6 @@
 			mainGroup = 1BFAC6E02725842B008A3346;
 			packageReferences = (
 				1B3B7FD92872A5C7001C497C /* XCRemoteSwiftPackageReference "realm-swift" */,
-				1B3B7FDE2872A5E8001C497C /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 1BFAC6EA2725842B008A3346 /* Products */;
 			projectDirPath = "";
@@ -686,14 +676,6 @@
 				kind = branch;
 			};
 		};
-		1B3B7FDE2872A5E8001C497C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -706,21 +688,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1B3B7FD92872A5C7001C497C /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
-		};
-		1B3B7FDF2872A5E8001C497C /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1B3B7FDE2872A5E8001C497C /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		1B3B7FE12872A5E8001C497C /* RxRelay */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1B3B7FDE2872A5E8001C497C /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxRelay;
-		};
-		1B3B7FE32872A5E8001C497C /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1B3B7FDE2872A5E8001C497C /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
