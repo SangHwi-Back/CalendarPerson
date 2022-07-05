@@ -7,11 +7,16 @@
 
 import Foundation
 
-struct YearMetadata {
+struct YearMetadata: Hashable {
+    
     let date: Date
     let components: DateComponents
     
     var monthsMetadata: [Int: MonthMetadata]?
+    
+    static func == (lhs: YearMetadata, rhs: YearMetadata) -> Bool {
+        lhs.date == rhs.date
+    }
 }
 
 class DaysOfYearInCalendar: DaysOfMonthInCalendar {

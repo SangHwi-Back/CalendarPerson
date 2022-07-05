@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// 1개월 분의 달력을 보여줍니다.
 class CommonCalendarView: UIView {
     
     // MARK: - IBOutlets

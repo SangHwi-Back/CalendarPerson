@@ -13,6 +13,9 @@
 		1B3B7FDD2872A5C7001C497C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1B3B7FDC2872A5C7001C497C /* RealmSwift */; };
 		1B43788A2730E60700A1C214 /* DaysOfMonthInCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4378892730E60700A1C214 /* DaysOfMonthInCalendar.swift */; };
 		1B43788C2730E76500A1C214 /* CalendarMonthsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B43788B2730E76500A1C214 /* CalendarMonthsFactory.swift */; };
+		1B4EF2072874074800C4A7CE /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EF2062874074800C4A7CE /* UICollectionViewCell+Extension.swift */; };
+		1B4EF209287414A100C4A7CE /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EF208287414A100C4A7CE /* UITableViewCell+Extension.swift */; };
+		1B4EF20B2874170700C4A7CE /* CalendarInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EF20A2874170700C4A7CE /* CalendarInfoTableViewCell.swift */; };
 		1B50164227EB43F600912E8D /* DaysGeneratorInCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50164127EB43F600912E8D /* DaysGeneratorInCalendar.swift */; };
 		1B50164427EB64AD00912E8D /* DayInCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50164327EB64AD00912E8D /* DayInCalendar.swift */; };
 		1B5B72CE2753555D00E11E5D /* CommonCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B5B72CD2753555D00E11E5D /* CommonCalendarView.xib */; };
@@ -24,7 +27,6 @@
 		1BC92AEE2726539A0079D326 /* MonthlyCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC92AED2726539A0079D326 /* MonthlyCalendarViewController.swift */; };
 		1BC92AF0272653AB0079D326 /* DailyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC92AEF272653AB0079D326 /* DailyScheduleViewController.swift */; };
 		1BC92AF2272653C00079D326 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC92AF1272653C00079D326 /* ScheduleDetailViewController.swift */; };
-		1BC92AF5272655020079D326 /* YearlyCalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC92AF4272655020079D326 /* YearlyCalendarTableViewCell.swift */; };
 		1BC92AF8272692840079D326 /* MonthlyCalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC92AF7272692840079D326 /* MonthlyCalendarTableViewCell.swift */; };
 		1BC92AFA272695530079D326 /* DailyScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC92AF9272695530079D326 /* DailyScheduleTableViewCell.swift */; };
 		1BFAC6ED2725842B008A3346 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFAC6EC2725842B008A3346 /* AppDelegate.swift */; };
@@ -52,6 +54,9 @@
 		1B36219327F0333D00E18837 /* DaysOfYearInCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfYearInCalendar.swift; sourceTree = "<group>"; };
 		1B4378892730E60700A1C214 /* DaysOfMonthInCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfMonthInCalendar.swift; sourceTree = "<group>"; };
 		1B43788B2730E76500A1C214 /* CalendarMonthsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthsFactory.swift; sourceTree = "<group>"; };
+		1B4EF2062874074800C4A7CE /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
+		1B4EF208287414A100C4A7CE /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		1B4EF20A2874170700C4A7CE /* CalendarInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfoTableViewCell.swift; sourceTree = "<group>"; };
 		1B50164127EB43F600912E8D /* DaysGeneratorInCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysGeneratorInCalendar.swift; sourceTree = "<group>"; };
 		1B50164327EB64AD00912E8D /* DayInCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayInCalendar.swift; sourceTree = "<group>"; };
 		1B5B72C92753505600E11E5D /* CommonCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCalendarView.swift; sourceTree = "<group>"; };
@@ -65,7 +70,6 @@
 		1BC92AED2726539A0079D326 /* MonthlyCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarViewController.swift; sourceTree = "<group>"; };
 		1BC92AEF272653AB0079D326 /* DailyScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyScheduleViewController.swift; sourceTree = "<group>"; };
 		1BC92AF1272653C00079D326 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
-		1BC92AF4272655020079D326 /* YearlyCalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyCalendarTableViewCell.swift; sourceTree = "<group>"; };
 		1BC92AF7272692840079D326 /* MonthlyCalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarTableViewCell.swift; sourceTree = "<group>"; };
 		1BC92AF9272695530079D326 /* DailyScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		1BC92AFB2726F83F0079D326 /* Date.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Date.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -124,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				1B9DB90B273BEC4B00B9E4DB /* UITableView+Util.swift */,
+				1B4EF2062874074800C4A7CE /* UICollectionViewCell+Extension.swift */,
+				1B4EF208287414A100C4A7CE /* UITableViewCell+Extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -165,7 +171,7 @@
 		1BC92AF6272655080079D326 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				1BC92AF4272655020079D326 /* YearlyCalendarTableViewCell.swift */,
+				1B4EF20A2874170700C4A7CE /* CalendarInfoTableViewCell.swift */,
 				1BC92AF7272692840079D326 /* MonthlyCalendarTableViewCell.swift */,
 				1BC92AF9272695530079D326 /* DailyScheduleTableViewCell.swift */,
 			);
@@ -348,14 +354,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BC92AF5272655020079D326 /* YearlyCalendarTableViewCell.swift in Sources */,
 				1B36219427F0333D00E18837 /* DaysOfYearInCalendar.swift in Sources */,
 				1BC92AEB272653820079D326 /* YearlyCalendarViewController.swift in Sources */,
 				1B64B6F227F0AB2000B29580 /* CommonCalendarView.swift in Sources */,
 				1BC92AF0272653AB0079D326 /* DailyScheduleViewController.swift in Sources */,
 				1BFAC6F12725842B008A3346 /* ViewController.swift in Sources */,
 				1BFAC6ED2725842B008A3346 /* AppDelegate.swift in Sources */,
+				1B4EF209287414A100C4A7CE /* UITableViewCell+Extension.swift in Sources */,
 				1BFAC6EF2725842B008A3346 /* SceneDelegate.swift in Sources */,
+				1B4EF20B2874170700C4A7CE /* CalendarInfoTableViewCell.swift in Sources */,
 				1B36219227F0132F00E18837 /* DaysReformatter.swift in Sources */,
 				1B9DB90C273BEC4B00B9E4DB /* UITableView+Util.swift in Sources */,
 				1B43788C2730E76500A1C214 /* CalendarMonthsFactory.swift in Sources */,
@@ -364,6 +371,7 @@
 				1B50164227EB43F600912E8D /* DaysGeneratorInCalendar.swift in Sources */,
 				1BC92AF2272653C00079D326 /* ScheduleDetailViewController.swift in Sources */,
 				1BC92AF8272692840079D326 /* MonthlyCalendarTableViewCell.swift in Sources */,
+				1B4EF2072874074800C4A7CE /* UICollectionViewCell+Extension.swift in Sources */,
 				1B50164427EB64AD00912E8D /* DayInCalendar.swift in Sources */,
 				1B43788A2730E60700A1C214 /* DaysOfMonthInCalendar.swift in Sources */,
 			);

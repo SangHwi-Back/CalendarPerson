@@ -7,12 +7,17 @@
 
 import Foundation
 
-struct DayMetadata {
+struct DayMetadata: Hashable {
+    
     let date: Date
     let components: DateComponents
     let isSelected: Bool
     let day: String
     let isOccupied: Bool
+    
+    static func == (lhs: DayMetadata, rhs: DayMetadata) -> Bool {
+        lhs.date == rhs.date
+    }
 }
 
 class DayInCalendar: DaysGeneratorInCalendar {

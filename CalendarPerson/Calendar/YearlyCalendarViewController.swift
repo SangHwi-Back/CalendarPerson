@@ -62,28 +62,32 @@ class YearlyCalendarViewController: UIViewController {
 }
 
 extension YearlyCalendarViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        yearMetadata.count
+//    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         yearMetadata.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let metadata = yearMetadata[section]
-        return dateFormatter.string(from: metadata.date)
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        let metadata = yearMetadata[section]
+//        return dateFormatter.string(from: metadata.date)
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: YearlyCalendarTableViewCell.self), for: indexPath) as? YearlyCalendarTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: CalendarInfoTableViewCell.reuseIdentifier,
+            for: indexPath) as? CalendarInfoTableViewCell
+        else {
             return UITableViewCell()
         }
         
         let metadata = yearMetadata[indexPath.section]
-        cell.monthMetadata = metadata.monthsMetadata
-        cell.indexYearInRow = indexPath.row
+        cell.yearMetadata = metadata
+//        cell.monthMetadata = metadata.monthsMetadata
+//        cell.indexYearInRow = indexPath.row
         
         return cell
     }

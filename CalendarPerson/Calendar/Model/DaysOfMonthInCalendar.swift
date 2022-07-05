@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct MonthMetadata {
+struct MonthMetadata: Hashable {
+    
     let date: Date
     let components: DateComponents
     var numberOfDays: Int {
@@ -17,6 +18,10 @@ struct MonthMetadata {
     var monthName: String
     
     var dayMetadata: [DayMetadata]?
+    
+    static func == (lhs: MonthMetadata, rhs: MonthMetadata) -> Bool {
+        lhs.date == rhs.date
+    }
 }
 
 class DaysOfMonthInCalendar: DayInCalendar {

@@ -8,8 +8,6 @@
 import UIKit
 
 class MonthlyCalendarTableViewCell: UITableViewCell {
-    static let reuseIdentifier = String(describing: MonthlyCalendarTableViewCell.self)
-
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     var layout: UICollectionViewFlowLayout!
     var masterVC: UIViewController?
@@ -52,8 +50,6 @@ extension MonthlyCalendarTableViewCell: UICollectionViewDataSource {
 }
 
 class MonthlyCollectionViewCell: UICollectionViewCell {
-    
-    static let reuseIdentifier = String(describing: MonthlyCollectionViewCell.self)
     
     @IBOutlet weak var dateLabel: UILabel!
     

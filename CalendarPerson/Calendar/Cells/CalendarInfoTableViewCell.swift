@@ -1,17 +1,31 @@
 //
-//  YearlyCalendarTableViewCell.swift
+//  CalendarInfoTableViewCell.swift
 //  CalendarPerson
 //
-//  Created by 백상휘 on 2021/10/25.
+//  Created by 백상휘 on 2022/07/05.
 //
 
 import UIKit
 
-class YearlyCalendarTableViewCell: UITableViewCell, UICollectionViewDataSource {
+class CalendarInfoTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var monthsInYearCollectionView: UICollectionView!
-    var indexYearInRow: Int = 0
-    var monthMetadata: [Int: MonthMetadata]?
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    @IBOutlet weak var calendarCollectionView: UICollectionView!
+    @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
+    
+    private var layout: UICollectionViewFlowLayout!
+    
+    var yearMetadata: YearMetadata? {
+        didSet {
+            if let year = self.yearMetadata?.components.year {
+                self.yearLabel.text = "\(year)"
+            }
+            
+            self.calendarCollectionView.reloadData()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,23 +33,25 @@ class YearlyCalendarTableViewCell: UITableViewCell, UICollectionViewDataSource {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 4
         layout.minimumLineSpacing = 16
-        let width = (monthsInYearCollectionView.frame.width / CGFloat(3)) - layout.minimumInteritemSpacing
+        let width = (calendarCollectionView.frame.width / CGFloat(3)) - layout.minimumInteritemSpacing
         layout.itemSize = CGSize(width: width, height: width)
         
-        monthsInYearCollectionView.collectionViewLayout = layout
-        monthsInYearCollectionView.dataSource = self
+        collectionViewHeightConstraint.constant = (width * 4) + (layout.minimumLineSpacing * 3)
+        calendarCollectionView.collectionViewLayout = layout
+        calendarCollectionView.dataSource = self
+    }
+}
+
+extension CalendarInfoTableViewCell: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        yearMetadata?.monthsMetadata?.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "YearlyCalendarCollectionViewCell", for: indexPath)
         
-        guard let metadata = monthMetadata?[indexPath.row + (indexYearInRow * 3) + 1] else {
-            return UICollectionViewCell()
+        guard let metadata = yearMetadata?.monthsMetadata?[indexPath.row+1] else {
+            return cell
         }
         
         if let commonCalendar = cell.subviews.first(where: {v in v is CommonCalendarView}) as? CommonCalendarView {
@@ -48,7 +64,7 @@ class YearlyCalendarTableViewCell: UITableViewCell, UICollectionViewDataSource {
             commonCalendar.monthMetadata = metadata
             cell.addSubview(commonCalendar)
         }
-
+        
         return cell
     }
 }

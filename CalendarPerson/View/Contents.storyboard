@@ -36,46 +36,66 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="579"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="YearlyCalendarTableViewCell" id="SPf-TK-iix" customClass="YearlyCalendarTableViewCell" customModule="CalendarPerson" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="375" height="132"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarInfoTableViewCell" rowHeight="180" id="JP3-Hc-ik0" customClass="CalendarInfoTableViewCell" customModule="CalendarPerson" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SPf-TK-iix" id="gjL-A3-xMf">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JP3-Hc-ik0" id="5kn-Nf-hq6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JHd-db-u3O">
-                                                    <rect key="frame" x="16" y="11" width="343" height="110"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="110" id="QmS-Lm-JHo"/>
-                                                    </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DZT-Pq-sgJ">
-                                                        <size key="itemSize" width="128" height="128"/>
-                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    </collectionViewFlowLayout>
-                                                    <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="YearlyCalendarCollectionViewCell" id="Eiy-RK-Y0I">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="f2I-0a-VTK">
-                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                            </collectionViewCellContentView>
-                                                        </collectionViewCell>
-                                                    </cells>
-                                                </collectionView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HUx-5G-gLD">
+                                                    <rect key="frame" x="16" y="11" width="343" height="158"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YEAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1h-uc-gg4">
+                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="17"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7g-ga-E3x">
+                                                            <rect key="frame" x="0.0" y="25" width="343" height="17"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YaE-Ll-76P">
+                                                            <rect key="frame" x="0.0" y="50" width="343" height="108"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="108" id="XdH-hB-VNi"/>
+                                                            </constraints>
+                                                            <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="coN-x4-iUI">
+                                                                <size key="itemSize" width="128" height="128"/>
+                                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            </collectionViewFlowLayout>
+                                                            <cells>
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="YearlyCalendarCollectionViewCell" id="bVa-0D-eYT">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mf4-eF-dFx">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                    </collectionViewCellContentView>
+                                                                </collectionViewCell>
+                                                            </cells>
+                                                        </collectionView>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="JHd-db-u3O" secondAttribute="trailing" id="1xA-aP-Bcb"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="JHd-db-u3O" secondAttribute="bottom" id="8yg-6h-zUb"/>
-                                                <constraint firstItem="JHd-db-u3O" firstAttribute="top" secondItem="gjL-A3-xMf" secondAttribute="topMargin" id="Uh0-zQ-lhN"/>
-                                                <constraint firstItem="JHd-db-u3O" firstAttribute="leading" secondItem="gjL-A3-xMf" secondAttribute="leadingMargin" id="Wr4-ie-PPf"/>
+                                                <constraint firstItem="HUx-5G-gLD" firstAttribute="leading" secondItem="5kn-Nf-hq6" secondAttribute="leadingMargin" id="P9E-p9-Fr5"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="HUx-5G-gLD" secondAttribute="trailing" id="Urw-cw-VFB"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="HUx-5G-gLD" secondAttribute="bottom" id="d9y-uo-meT"/>
+                                                <constraint firstItem="HUx-5G-gLD" firstAttribute="top" secondItem="5kn-Nf-hq6" secondAttribute="topMargin" id="iSW-gL-PYX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="monthsInYearCollectionView" destination="JHd-db-u3O" id="yrN-FO-JHl"/>
+                                            <outlet property="calendarCollectionView" destination="YaE-Ll-76P" id="5Cr-dU-JTg"/>
+                                            <outlet property="collectionViewHeightConstraint" destination="XdH-hB-VNi" id="5Pk-1H-8tG"/>
+                                            <outlet property="descriptionLabel" destination="Z7g-ga-E3x" id="tTP-BM-taY"/>
+                                            <outlet property="yearLabel" destination="X1h-uc-gg4" id="s4T-lC-qHl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -107,7 +127,7 @@
                         <outlet property="addButton" destination="Uth-cr-dqB" id="qhd-qu-D7H"/>
                         <outlet property="searchButton" destination="ijg-pa-Tbj" id="HPx-74-0py"/>
                         <outlet property="settingButton" destination="sGa-8e-XTx" id="wmg-Us-j3Y"/>
-                        <outlet property="yearlyTableView" destination="cmU-MI-hni" id="c99-zR-84y"/>
+                        <outlet property="yearlyTableView" destination="cmU-MI-hni" id="CFJ-AD-XAe"/>
                         <segue destination="Syg-im-dVx" kind="show" identifier="MonthlyCalendarViewController" id="lkD-iD-of8"/>
                     </connections>
                 </viewController>
@@ -118,7 +138,6 @@
         <!--View Controller-->
         <scene sceneID="sie-uK-Y95">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TkN-0y-HKs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SettingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z6z-p1-dZH" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sPP-Bb-OJj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -128,6 +147,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="SwQ-cc-iTe"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TkN-0y-HKs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="974" y="869"/>
         </scene>
