@@ -85,10 +85,6 @@ extension YearlyCalendarViewController: UITableViewDataSource {
 }
 
 extension YearlyCalendarViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-        <#code#>
-    }
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         guard yearMetadata.isEmpty == false, (indexPath.row == 0 || indexPath.row == yearMetadata.count - 1) else {
