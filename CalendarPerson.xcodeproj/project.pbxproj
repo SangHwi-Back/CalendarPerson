@@ -26,7 +26,6 @@
 		1BC92AEB272653820079D326 /* YearlyCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC92AEA272653820079D326 /* YearlyCalendarViewController.swift */; };
 		1BC92AEE2726539A0079D326 /* MonthlyCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC92AED2726539A0079D326 /* MonthlyCalendarViewController.swift */; };
 		1BC92AF0272653AB0079D326 /* DailyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC92AEF272653AB0079D326 /* DailyScheduleViewController.swift */; };
-		1BC92AF2272653C00079D326 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC92AF1272653C00079D326 /* ScheduleDetailViewController.swift */; };
 		1BC92AF8272692840079D326 /* MonthlyCalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC92AF7272692840079D326 /* MonthlyCalendarTableViewCell.swift */; };
 		1BC92AFA272695530079D326 /* DailyScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC92AF9272695530079D326 /* DailyScheduleTableViewCell.swift */; };
 		1BFAC6ED2725842B008A3346 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFAC6EC2725842B008A3346 /* AppDelegate.swift */; };
@@ -69,7 +68,6 @@
 		1BC92AEA272653820079D326 /* YearlyCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyCalendarViewController.swift; sourceTree = "<group>"; };
 		1BC92AED2726539A0079D326 /* MonthlyCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarViewController.swift; sourceTree = "<group>"; };
 		1BC92AEF272653AB0079D326 /* DailyScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyScheduleViewController.swift; sourceTree = "<group>"; };
-		1BC92AF1272653C00079D326 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
 		1BC92AF7272692840079D326 /* MonthlyCalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarTableViewCell.swift; sourceTree = "<group>"; };
 		1BC92AF9272695530079D326 /* DailyScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		1BC92AFB2726F83F0079D326 /* Date.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Date.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -124,6 +122,33 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1B4EF20C28753DC800C4A7CE /* YearSection */ = {
+			isa = PBXGroup;
+			children = (
+				1BC92AEA272653820079D326 /* YearlyCalendarViewController.swift */,
+				1B4EF20A2874170700C4A7CE /* CalendarInfoTableViewCell.swift */,
+			);
+			path = YearSection;
+			sourceTree = "<group>";
+		};
+		1B4EF20D28753DDB00C4A7CE /* MonthSection */ = {
+			isa = PBXGroup;
+			children = (
+				1BC92AED2726539A0079D326 /* MonthlyCalendarViewController.swift */,
+				1BC92AF7272692840079D326 /* MonthlyCalendarTableViewCell.swift */,
+			);
+			path = MonthSection;
+			sourceTree = "<group>";
+		};
+		1B4EF20E28753DE900C4A7CE /* DaySection */ = {
+			isa = PBXGroup;
+			children = (
+				1BC92AEF272653AB0079D326 /* DailyScheduleViewController.swift */,
+				1BC92AF9272695530079D326 /* DailyScheduleTableViewCell.swift */,
+			);
+			path = DaySection;
+			sourceTree = "<group>";
+		};
 		1B9DB90D273BEC5100B9E4DB /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,11 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				1B4378862730E5F200A1C214 /* Model */,
-				1BC92AF6272655080079D326 /* Cells */,
-				1BC92AEA272653820079D326 /* YearlyCalendarViewController.swift */,
-				1BC92AED2726539A0079D326 /* MonthlyCalendarViewController.swift */,
-				1BC92AEF272653AB0079D326 /* DailyScheduleViewController.swift */,
-				1BC92AF1272653C00079D326 /* ScheduleDetailViewController.swift */,
+				1B4EF20C28753DC800C4A7CE /* YearSection */,
+				1B4EF20D28753DDB00C4A7CE /* MonthSection */,
+				1B4EF20E28753DE900C4A7CE /* DaySection */,
 				1B753B82272AD089000E7A5D /* CommonCalendarViewController.swift */,
 				1B5B72C92753505600E11E5D /* CommonCalendarView.swift */,
 			);
@@ -166,16 +189,6 @@
 				1B5B72CD2753555D00E11E5D /* CommonCalendarView.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		1BC92AF6272655080079D326 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				1B4EF20A2874170700C4A7CE /* CalendarInfoTableViewCell.swift */,
-				1BC92AF7272692840079D326 /* MonthlyCalendarTableViewCell.swift */,
-				1BC92AF9272695530079D326 /* DailyScheduleTableViewCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		1BFAC6E02725842B008A3346 = {
@@ -369,7 +382,6 @@
 				1BC92AFA272695530079D326 /* DailyScheduleTableViewCell.swift in Sources */,
 				1BC92AEE2726539A0079D326 /* MonthlyCalendarViewController.swift in Sources */,
 				1B50164227EB43F600912E8D /* DaysGeneratorInCalendar.swift in Sources */,
-				1BC92AF2272653C00079D326 /* ScheduleDetailViewController.swift in Sources */,
 				1BC92AF8272692840079D326 /* MonthlyCalendarTableViewCell.swift in Sources */,
 				1B4EF2072874074800C4A7CE /* UICollectionViewCell+Extension.swift in Sources */,
 				1B50164427EB64AD00912E8D /* DayInCalendar.swift in Sources */,
