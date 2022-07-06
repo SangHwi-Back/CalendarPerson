@@ -27,6 +27,8 @@ class CalendarInfoTableViewCell: UITableViewCell {
     
     var didSelectRowHandler: (() -> Void)?
     
+    var indexPath: IndexPath?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

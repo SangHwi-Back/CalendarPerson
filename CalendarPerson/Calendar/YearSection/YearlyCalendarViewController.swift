@@ -20,8 +20,6 @@ class YearlyCalendarViewController: UIViewController {
     @IBOutlet weak var settingButton: UIBarButtonItem!
     
     private var yearGenerator: DaysOfYearInCalendar!
-    
-    private var dateFormatter = DateFormatter()
     private var yearMetadata = [YearMetadata]()
     
     override func viewDidLoad() {
@@ -29,24 +27,23 @@ class YearlyCalendarViewController: UIViewController {
         
         let year = Calendar.current.dateComponents([.year], from: Date()).year!
         
-        dateFormatter.dateFormat = "y"
-        yearGenerator = DaysOfYearInCalendar(current: Calendar.current, formatString: "d", startYear: year - 8)
+        yearGenerator = DaysOfYearInCalendar(current: Calendar.current, formatString: "d", startYear: year-4)
         
         do {
-            for _ in 0..<14 {
+            for _ in 0..<9 {
                 yearMetadata.append(try yearGenerator.getNextYearMetadata())
             }
         } catch {
             print(error)
         }
         
-        if yearlyTableView.numberOfSections > 4 {
-            yearlyTableView.scrollToRow(
-                at: IndexPath(row: 0, section: 7),
-                at: .top,
-                animated: false
-            )
-        }
+        yearlyTableView.dataSource = self
+        yearlyTableView.delegate = self
+        yearlyTableView.scrollToRow(
+            at: IndexPath(row: 5, section: 0),
+            at: .middle,
+            animated: false
+        )
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -76,13 +73,54 @@ extension YearlyCalendarViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let metadata = yearMetadata[indexPath.section]
+        let metadata = yearMetadata[indexPath.row]
         cell.yearMetadata = metadata
+        cell.indexPath = indexPath
         cell.didSelectRowHandler = {
             self.goDetail(Date())
         }
         
         return cell
+    }
+}
+
+extension YearlyCalendarViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        guard yearMetadata.isEmpty == false, (indexPath.row == 0 || indexPath.row == yearMetadata.count - 1) else {
+            return
+        }
+        
+        let isFirstRow = indexPath.row == 0
+        let dateStandard = isFirstRow ? yearMetadata.first?.date : yearMetadata.last?.date
+        
+        if let date = dateStandard {
+            
+            yearGenerator.setDate(base: date)
+            
+            do {
+                if isFirstRow {
+                    yearMetadata.insert(try yearGenerator.getPreviousYearMetadata(), at: 0)
+                    yearMetadata.removeLast()
+                } else {
+                    yearMetadata.append(try yearGenerator.getNextYearMetadata())
+                    yearMetadata.removeFirst()
+                }
+            } catch {
+                print(error)
+            }
+            
+            DispatchQueue.main.async {
+                tableView.performBatchUpdates {
+                    tableView.deleteRows(at: [IndexPath(row: isFirstRow ? tableView.numberOfRows(inSection: 0)-1 : 0, section: 0)], with: .none)
+                    tableView.insertRows(at: [IndexPath(row: isFirstRow ? 0 : tableView.numberOfRows(inSection: 0)-1, section: 0)], with: .none)
+                }
+            }
+        }
     }
 }
 

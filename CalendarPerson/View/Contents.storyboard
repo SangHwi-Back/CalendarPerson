@@ -159,10 +159,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="DeH-AH-ISL" id="p9D-Bw-Nsd"/>
-                                    <outlet property="delegate" destination="DeH-AH-ISL" id="pdx-CA-hQR"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JQL-UV-zko"/>
