@@ -15,8 +15,6 @@ class CalendarInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
     
-    private var layout: UICollectionViewFlowLayout!
-    
     var yearMetadata: YearMetadata? {
         didSet {
             if let year = self.yearMetadata?.components.year {
@@ -30,15 +28,21 @@ class CalendarInfoTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        let layout = getLayout()
+        calendarCollectionView.collectionViewLayout = layout
+        
+        collectionViewHeightConstraint.constant = (layout.itemSize.width * 4) + (layout.minimumLineSpacing * 3)
+        
+        calendarCollectionView.dataSource = self
+    }
+    
+    private func getLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 4
         layout.minimumLineSpacing = 16
         let width = (calendarCollectionView.frame.width / CGFloat(3)) - layout.minimumInteritemSpacing
         layout.itemSize = CGSize(width: width, height: width)
-        
-        collectionViewHeightConstraint.constant = (width * 4) + (layout.minimumLineSpacing * 3)
-        calendarCollectionView.collectionViewLayout = layout
-        calendarCollectionView.dataSource = self
+        return layout
     }
 }
 
@@ -54,16 +58,16 @@ extension CalendarInfoTableViewCell: UICollectionViewDataSource {
             return cell
         }
         
-        if let commonCalendar = cell.subviews.first(where: {v in v is CommonCalendarView}) as? CommonCalendarView {
+        var commonCalendar = cell.subviews.first(where: { $0 is CommonCalendarView }) as? CommonCalendarView
+        
+        if commonCalendar == nil, let commonCalendarCreated = Bundle.main.loadNibNamed("CommonCalendarView", owner: nil)?.first as? CommonCalendarView {
             
-            commonCalendar.monthMetadata = metadata
-            
-        } else if let commonCalendar = Bundle.main.loadNibNamed("CommonCalendarView", owner: nil)?.first as? CommonCalendarView {
-            
-            commonCalendar.frame = cell.bounds
-            commonCalendar.monthMetadata = metadata
-            cell.addSubview(commonCalendar)
+            cell.addSubview(commonCalendarCreated)
+            commonCalendarCreated.frame = cell.bounds
+            commonCalendar = commonCalendarCreated
         }
+        
+        commonCalendar?.monthMetadata = metadata
         
         return cell
     }
