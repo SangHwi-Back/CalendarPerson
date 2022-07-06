@@ -19,7 +19,6 @@ class YearlyCalendarViewController: UIViewController {
     
     @IBOutlet weak var settingButton: UIBarButtonItem!
     
-    /// Model for year, month, day
     private var yearGenerator: DaysOfYearInCalendar!
     
     private var dateFormatter = DateFormatter()
@@ -52,6 +51,7 @@ class YearlyCalendarViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? MonthlyCalendarViewController {
+            dest.modalTransitionStyle = .flipHorizontal
             dest.baseDate = yearGenerator.baseDate
         }
     }
@@ -62,18 +62,10 @@ class YearlyCalendarViewController: UIViewController {
 }
 
 extension YearlyCalendarViewController: UITableViewDataSource {
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        yearMetadata.count
-//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         yearMetadata.count
     }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        let metadata = yearMetadata[section]
-//        return dateFormatter.string(from: metadata.date)
-//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -86,8 +78,9 @@ extension YearlyCalendarViewController: UITableViewDataSource {
         
         let metadata = yearMetadata[indexPath.section]
         cell.yearMetadata = metadata
-//        cell.monthMetadata = metadata.monthsMetadata
-//        cell.indexYearInRow = indexPath.row
+        cell.didSelectRowHandler = {
+            self.goDetail(Date())
+        }
         
         return cell
     }

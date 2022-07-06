@@ -25,6 +25,8 @@ class CalendarInfoTableViewCell: UITableViewCell {
         }
     }
     
+    var didSelectRowHandler: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -34,6 +36,7 @@ class CalendarInfoTableViewCell: UITableViewCell {
         collectionViewHeightConstraint.constant = (layout.itemSize.width * 4) + (layout.minimumLineSpacing * 3)
         
         calendarCollectionView.dataSource = self
+        calendarCollectionView.delegate = self
     }
     
     private func getLayout() -> UICollectionViewFlowLayout {
@@ -70,5 +73,11 @@ extension CalendarInfoTableViewCell: UICollectionViewDataSource {
         commonCalendar?.monthMetadata = metadata
         
         return cell
+    }
+}
+
+extension CalendarInfoTableViewCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        didSelectRowHandler?()
     }
 }

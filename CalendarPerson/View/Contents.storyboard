@@ -118,7 +118,7 @@
                                                                 <constraint firstItem="MgL-PF-pWq" firstAttribute="top" secondItem="PC3-YT-SH3" secondAttribute="top" id="z4b-yw-Wwk"/>
                                                             </constraints>
                                                         </view>
-                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YaE-Ll-76P">
+                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YaE-Ll-76P">
                                                             <rect key="frame" x="0.0" y="90" width="343" height="108"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
