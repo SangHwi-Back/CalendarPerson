@@ -11,10 +11,11 @@ class MonthlyCalendarViewController: UIViewController {
 
     @IBOutlet weak var monthlyTableView: UITableView!
     
-    var baseDate: Date?
+    var metadata: MonthMetadata?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(metadata?.date)
     }
 }
 

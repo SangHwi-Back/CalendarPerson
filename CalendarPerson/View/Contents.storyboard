@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -52,7 +53,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YEAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1h-uc-gg4">
                                                                     <rect key="frame" x="0.0" y="0.0" width="265" height="21"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                                    <nil key="textColor"/>
+                                                                    <color key="textColor" name="AccentColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zaz-Le-yTZ">
@@ -61,13 +62,14 @@
                                                                         <constraint firstAttribute="height" constant="21" id="9rG-dH-0eU"/>
                                                                         <constraint firstAttribute="width" constant="70" id="goV-B9-Nad"/>
                                                                     </constraints>
+                                                                    <color key="tintColor" systemColor="secondaryLabelColor"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" image="chevron.forward" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
                                                                 </button>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="X1h-uc-gg4" firstAttribute="leading" secondItem="qpX-Uh-gjr" secondAttribute="leading" id="50B-Ii-fWA"/>
                                                                 <constraint firstItem="Zaz-Le-yTZ" firstAttribute="leading" secondItem="X1h-uc-gg4" secondAttribute="trailing" constant="8" symbolic="YES" id="5Ou-kZ-eVw"/>
@@ -88,7 +90,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="Z7g-ga-E3x" firstAttribute="top" secondItem="G5p-le-e0V" secondAttribute="top" id="E10-Xy-gsb"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Z7g-ga-E3x" secondAttribute="trailing" id="NZO-xY-E1F"/>
@@ -105,13 +107,14 @@
                                                                         <constraint firstAttribute="width" constant="70" id="cEW-Bt-10u"/>
                                                                         <constraint firstAttribute="height" constant="21" id="o23-H9-Ep3"/>
                                                                     </constraints>
+                                                                    <color key="tintColor" systemColor="secondaryLabelColor"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" image="chevron.forward" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
                                                                 </button>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="bottom" secondItem="MgL-PF-pWq" secondAttribute="bottom" id="55e-Xl-NeP"/>
                                                                 <constraint firstAttribute="trailing" secondItem="MgL-PF-pWq" secondAttribute="trailing" id="9wi-7i-eYn"/>
@@ -120,7 +123,7 @@
                                                         </view>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YaE-Ll-76P">
                                                             <rect key="frame" x="0.0" y="90" width="343" height="108"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="108" id="XdH-hB-VNi"/>
                                                             </constraints>
@@ -144,9 +147,10 @@
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
+                                            <color key="tintColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstItem="HUx-5G-gLD" firstAttribute="leading" secondItem="5kn-Nf-hq6" secondAttribute="leadingMargin" id="P9E-p9-Fr5"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="HUx-5G-gLD" secondAttribute="trailing" id="Urw-cw-VFB"/>
+                                                <constraint firstItem="HUx-5G-gLD" firstAttribute="leading" secondItem="5kn-Nf-hq6" secondAttribute="leading" constant="16" id="P9E-p9-Fr5"/>
+                                                <constraint firstAttribute="trailing" secondItem="HUx-5G-gLD" secondAttribute="trailing" constant="16" id="Urw-cw-VFB"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="HUx-5G-gLD" secondAttribute="bottom" id="d9y-uo-meT"/>
                                                 <constraint firstItem="HUx-5G-gLD" firstAttribute="top" secondItem="5kn-Nf-hq6" secondAttribute="topMargin" id="iSW-gL-PYX"/>
                                             </constraints>
@@ -922,6 +926,12 @@
         <image name="list.bullet.below.rectangle" catalog="system" width="128" height="112"/>
         <image name="list.triangle" catalog="system" width="128" height="91"/>
         <image name="person" catalog="system" width="128" height="117"/>
+        <namedColor name="AccentColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

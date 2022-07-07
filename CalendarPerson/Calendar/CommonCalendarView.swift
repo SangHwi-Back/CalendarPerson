@@ -29,7 +29,7 @@ class CommonCalendarView: UIView {
     private var currentSetLabel: UILabel?
     
     private var labelSizeProperty: CGFloat {
-        (self.frame.size.width / 7) - labelPadding
+        (self.frame.size.width / 7)
     }
     
     private var labelPadding: CGFloat {

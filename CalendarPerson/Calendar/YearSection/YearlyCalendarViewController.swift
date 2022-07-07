@@ -22,6 +22,8 @@ class YearlyCalendarViewController: UIViewController {
     private var yearGenerator: DaysOfYearInCalendar!
     private var yearMetadata = [YearMetadata]()
     
+    private var enableTableViewUpdate = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,9 +41,14 @@ class YearlyCalendarViewController: UIViewController {
         
         yearlyTableView.dataSource = self
         yearlyTableView.delegate = self
+        
+        yearlyTableView.separatorStyle = .singleLine
+        yearlyTableView.separatorColor = UIColor.opaqueSeparator
+        yearlyTableView.separatorInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        
         yearlyTableView.scrollToRow(
-            at: IndexPath(row: 5, section: 0),
-            at: .middle,
+            at: IndexPath(row: 4, section: 0),
+            at: .top,
             animated: false
         )
     }
@@ -49,12 +56,19 @@ class YearlyCalendarViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? MonthlyCalendarViewController {
             dest.modalTransitionStyle = .flipHorizontal
-            dest.baseDate = yearGenerator.baseDate
+            dest.metadata = sender as? MonthMetadata
         }
     }
     
     @IBAction func settingButtonTouchUpInside(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "SettingViewController", sender: self)
+    }
+    
+    private func goDetail(_ metadata: MonthMetadata) {
+        self.performSegue(
+            withIdentifier: String(describing: MonthlyCalendarViewController.self),
+            sender: metadata
+        )
     }
 }
 
@@ -76,8 +90,8 @@ extension YearlyCalendarViewController: UITableViewDataSource {
         let metadata = yearMetadata[indexPath.row]
         cell.yearMetadata = metadata
         cell.indexPath = indexPath
-        cell.didSelectRowHandler = {
-            self.goDetail(Date())
+        cell.didSelectRowHandler = { monthMetadata in
+            self.goDetail(monthMetadata)
         }
         
         return cell
@@ -86,6 +100,10 @@ extension YearlyCalendarViewController: UITableViewDataSource {
 
 extension YearlyCalendarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        guard enableTableViewUpdate else {
+            return
+        }
         
         guard yearMetadata.isEmpty == false, (indexPath.row == 0 || indexPath.row == yearMetadata.count - 1) else {
             return
@@ -110,21 +128,17 @@ extension YearlyCalendarViewController: UITableViewDelegate {
                 print(error)
             }
             
+            let lastRowNumber = tableView.numberOfRows(inSection: 0)-1
+            enableTableViewUpdate = false
+            
             DispatchQueue.main.async {
                 tableView.performBatchUpdates {
-                    tableView.deleteRows(at: [IndexPath(row: isFirstRow ? tableView.numberOfRows(inSection: 0)-1 : 0, section: 0)], with: .none)
-                    tableView.insertRows(at: [IndexPath(row: isFirstRow ? 0 : tableView.numberOfRows(inSection: 0)-1, section: 0)], with: .none)
+                    tableView.deleteRows(at: [IndexPath(row: isFirstRow ? lastRowNumber : 0, section: 0),], with: .none)
+                    tableView.insertRows(at: [IndexPath(row: isFirstRow ? 0 : lastRowNumber, section: 0),], with: .none)
                 }
+                
+                self.enableTableViewUpdate = true
             }
         }
-    }
-}
-
-extension YearlyCalendarViewController: YearlyTableViewSegueDelegate {
-    func goDetail(_ date: Date) {
-        self.performSegue(
-            withIdentifier: String(describing: MonthlyCalendarViewController.self),
-            sender: date
-        )
     }
 }

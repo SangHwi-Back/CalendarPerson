@@ -25,7 +25,7 @@ class CalendarInfoTableViewCell: UITableViewCell {
         }
     }
     
-    var didSelectRowHandler: (() -> Void)?
+    var didSelectRowHandler: ((MonthMetadata) -> Void)?
     
     var indexPath: IndexPath?
     
@@ -80,6 +80,11 @@ extension CalendarInfoTableViewCell: UICollectionViewDataSource {
 
 extension CalendarInfoTableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        didSelectRowHandler?()
+        let cell = collectionView.cellForItem(at: indexPath)
+        let commonCalendar = cell?.subviews.first(where: { $0 is CommonCalendarView }) as? CommonCalendarView
+        
+        if let monthMetadata = commonCalendar?.monthMetadata {
+            didSelectRowHandler?(monthMetadata)
+        }
     }
 }
