@@ -124,6 +124,7 @@ class DaysOfMonthInCalendar: DayInCalendar {
     func getMonthName() -> String {
         let oldFormat = dateFormatter.dateFormat
         dateFormatter.dateFormat = "MMM"
+        dateFormatter.locale = Locale.current
         
         defer {
             dateFormatter.dateFormat = oldFormat

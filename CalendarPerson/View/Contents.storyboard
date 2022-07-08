@@ -302,63 +302,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x33-Lo-95B" id="VqE-QE-JX5">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="501"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2kx-Tu-bQj">
-                                                    <rect key="frame" x="16" y="11" width="343" height="479"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RXx-OK-ZKe">
-                                                        <size key="itemSize" width="128" height="128"/>
-                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    </collectionViewFlowLayout>
-                                                    <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MonthlyCollectionViewCell" reuseIdentifier="MonthlyCollectionViewCell" id="SJh-SG-HPD" customClass="MonthlyCollectionViewCell" customModule="CalendarPerson" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Jz8-5j-ZFc">
-                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hO0-Bd-KTD">
-                                                                        <rect key="frame" x="60.5" y="54" width="7.5" height="20.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="hO0-Bd-KTD" firstAttribute="centerY" secondItem="Jz8-5j-ZFc" secondAttribute="centerY" id="iF9-O7-bpw"/>
-                                                                    <constraint firstItem="hO0-Bd-KTD" firstAttribute="centerX" secondItem="Jz8-5j-ZFc" secondAttribute="centerX" id="tmW-ax-dHA"/>
-                                                                </constraints>
-                                                            </collectionViewCellContentView>
-                                                            <connections>
-                                                                <outlet property="dateLabel" destination="hO0-Bd-KTD" id="4Iz-Mp-T7h"/>
-                                                            </connections>
-                                                        </collectionViewCell>
-                                                    </cells>
-                                                    <connections>
-                                                        <outlet property="dataSource" destination="x33-Lo-95B" id="Fyi-Sr-QWz"/>
-                                                        <outlet property="delegate" destination="x33-Lo-95B" id="7Sc-f2-D4z"/>
-                                                    </connections>
-                                                </collectionView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="2kx-Tu-bQj" secondAttribute="trailing" id="AGF-WP-RIA"/>
-                                                <constraint firstItem="2kx-Tu-bQj" firstAttribute="leading" secondItem="VqE-QE-JX5" secondAttribute="leadingMargin" id="Bul-qI-voe"/>
-                                                <constraint firstItem="2kx-Tu-bQj" firstAttribute="top" secondItem="VqE-QE-JX5" secondAttribute="topMargin" id="dqd-qJ-Hif"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="2kx-Tu-bQj" secondAttribute="bottom" id="x5k-zq-bK2"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="calendarCollectionView" destination="2kx-Tu-bQj" id="og0-la-3pw"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Syg-im-dVx" id="duG-2W-LMh"/>
-                                    <outlet property="delegate" destination="Syg-im-dVx" id="0uE-HD-Qu3"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JTg-nK-NZS"/>

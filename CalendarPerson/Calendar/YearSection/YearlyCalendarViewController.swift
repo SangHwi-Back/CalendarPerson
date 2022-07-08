@@ -56,7 +56,7 @@ class YearlyCalendarViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? MonthlyCalendarViewController {
             dest.modalTransitionStyle = .flipHorizontal
-            dest.metadata = sender as? MonthMetadata
+            dest.startDate = (sender as? MonthMetadata)?.date
         }
     }
     
